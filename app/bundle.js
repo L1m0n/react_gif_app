@@ -21465,8 +21465,10 @@
 	
 	    _this.getGif = _this.getGif.bind(_this);
 	    _this.searchQuery = _this.searchQuery.bind(_this);
+	    _this.more = _this.more.bind(_this);
 	    _this.state = {
-	      data: []
+	      data: [],
+	      offset: 0
 	    };
 	    return _this;
 	  }
@@ -21475,19 +21477,29 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {}
 	  }, {
+	    key: 'more',
+	    value: function more() {
+	      this.setState({
+	        offset: this.state.offset + 25
+	      });
+	      this.getGif();
+	      console.log(this.state);
+	    }
+	  }, {
 	    key: 'getGif',
 	    value: function getGif(e) {
-	      e.preventDefault();
+	      if (e) e.preventDefault();
 	      var self = this;
 	      var query = encodeURIComponent(this.state.query);
-	      var urlPrefix = "http://api.giphy.com/v1/stickers/search?q=";
-	      var apiKey = '&api_key=dc6zaTOxFJmzC';
+	      var urlPrefix = "http://api.giphy.com/v1/gifs/search?q=";
+	      var apiKey = '&offset=' + this.state.offset + '&api_key=dc6zaTOxFJmzC';
 	
 	      var url = urlPrefix + query + apiKey;
 	      var data = (0, _getjson2.default)(url);
 	      data.then(function (result) {
 	        self.setState({
-	          data: result.data
+	          data: result.data,
+	          offset: self.state.offset + 25
 	        });
 	      }, function (error) {
 	        return console.log(error);
@@ -21511,6 +21523,11 @@
 	          'form',
 	          { onSubmit: this.getGif },
 	          _react2.default.createElement('input', { type: 'text', onChange: this.searchQuery })
+	        ),
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.more, style: { display: this.state.offset == 0 ? 'none' : 'block' } },
+	          'More!!!'
 	        ),
 	        this.state.data.map(function (img) {
 	          return _react2.default.createElement('img', { src: img.images.fixed_width_small.url, key: count++ });
