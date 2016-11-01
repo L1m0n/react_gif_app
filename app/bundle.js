@@ -21484,23 +21484,29 @@
 	  }, {
 	    key: 'getGif',
 	    value: function getGif(e) {
+	      var _this2 = this;
+	
 	      if (e) e.preventDefault();
+	
+	      console.log('state_after', this.state);
 	      var self = this;
 	      var query = encodeURIComponent(this.state.query);
-	      var urlPrefix = "http://api.giphy.com/v1/gifs/search?q=";
-	      var apiKey = '&offset=' + this.state.offset + '&api_key=dc6zaTOxFJmzC';
+	      var urlPrefix = "http://api.giphy.com/v1/gifs/translate?s=";
+	      var apiKey = '&api_key=dc6zaTOxFJmzC';
+	      var offset = "&offset=" + this.state.offset;
 	
-	      var url = urlPrefix + query + apiKey;
+	      var url = urlPrefix + query + apiKey + offset;
 	      var data = (0, _getjson2.default)(url);
+	
 	      data.then(function (result) {
 	        self.setState({
 	          data: result.data,
-	          offset: self.state.offset + 25
+	          offset: self.state.offset + 1
 	        });
+	        console.log('state_after', _this2.state);
 	      }, function (error) {
 	        return console.log(error);
 	      });
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'searchQuery',
@@ -21512,24 +21518,43 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var count = 0;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'App' },
-	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: this.getGif },
-	          _react2.default.createElement('input', { type: 'text', onChange: this.searchQuery })
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.more, style: { display: this.state.offset == 0 ? 'none' : 'block' } },
-	          'More!!!'
-	        ),
-	        this.state.data.map(function (img) {
-	          return _react2.default.createElement('img', { src: img.images.fixed_width_small.url, key: count++ });
-	        })
-	      );
+	      if (this.state.data.images) {
+	        var count = 0;
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'App' },
+	          _react2.default.createElement(
+	            'form',
+	            { onSubmit: this.getGif },
+	            _react2.default.createElement('input', { type: 'text', onChange: this.searchQuery })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.more, style: { display: this.state.offset == 0 ? 'none' : 'block' } },
+	            'More!!!'
+	          ),
+	          _react2.default.createElement('img', { src: this.state.data.images.downsized_medium.url })
+	          /*this.state.data.map(img=>
+	            <img src={img.images.downsized.url} key={count++}/>
+	          )*/
+	
+	        );
+	      } else {
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'App' },
+	          _react2.default.createElement(
+	            'form',
+	            { onSubmit: this.getGif },
+	            _react2.default.createElement('input', { type: 'text', onChange: this.searchQuery })
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.more, style: { display: this.state.offset == 0 ? 'none' : 'block' } },
+	            'More!!!'
+	          )
+	        );
+	      }
 	    }
 	  }]);
 	

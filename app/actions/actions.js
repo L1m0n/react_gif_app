@@ -1,36 +1,59 @@
+import fetch from 'isomorphic-fetch';
 
-//action example
-/*export function setSelectedDate(date) {
-  return {
-    type: 'SET_SELECTED_DATE',
-    date: date
-  };
-};*/
-
-//midleware examle
-/*export function fetchData() {
-  return function thunk(dispatch) {
-    if (evt) evt.preventDefault(); 
-
-    getJSON(url).then(function(data) {
-      var list = data.list;
-      var dates = [];
-      var temps =[];
-
-      for (var i = 0; i < list.length; i++) {
-        dates.push(list[i].dt_txt);
-        temps.push(list[i].main.temp);
-      }
-
-      
-      dispatch(setData(body));
-      dispatch(setDates(dates));
-      dispatch(setTemps(temps));
-      dispatch(setSelectedDate(''));
-      dispatch(setSelectedTemp(null));
-
-    }, function(status) { 
-      alert('Something went wrong.');
-    });
+export function fetchData(fetchOffset, url){
+  return function(dispatch) {
+    return fetch(url)
+      .then(response => response.json())
+      .then(dispatch(reciveData(data)))
   }
-};*/
+}
+
+export function reciveData(data){
+  return {
+    type:"RECIVE_DATA",
+    data
+  }
+}
+
+export function selectCategory(category) {
+  return {
+    type:"SELECT_CATEGORY",
+    category
+  }
+}
+
+export function nextPage(pageOffset) {
+  return {
+    type:"MOVE_NEXT",
+    pageOffset
+  }
+}
+
+export function prevPage(pageOffset) {
+  return {
+    type:"MOVE_PREV",
+    pageOffset
+  }
+}
+
+{
+  selectedCatefory:'gifs',
+  gifs:{
+    fetchOffset:0,
+    offsetPerQuery:25,
+    pageOffset:0,
+    total: 100500,
+    data: [
+      {
+        id:0,
+        url_sm:'www',
+        url_lg:'www'
+      },
+      {
+        id:1,
+        url_sm:'www',
+        url_lg:'www'
+      }
+    ]
+  }
+}

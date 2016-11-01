@@ -25,22 +25,26 @@ export default class App extends Component {
 
   getGif(e){
     if(e)e.preventDefault();
+
+    console.log('state_after',this.state)
     let self = this
     let query = encodeURIComponent(this.state.query) 
-    let urlPrefix = "http://api.giphy.com/v1/gifs/search?q=";
-    let apiKey = '&offset='+this.state.offset+'&api_key=dc6zaTOxFJmzC';
+    let urlPrefix = "http://api.giphy.com/v1/gifs/translate?s=";
+    let apiKey = '&api_key=dc6zaTOxFJmzC';
+    let offset = "&offset="+this.state.offset
 
-    let url = urlPrefix+query+apiKey;
+    let url = urlPrefix+query+apiKey+offset;
     let data = getJSON(url);
+
     data.then(result => {
       self.setState({
         data: result.data,
-        offset:self.state.offset+25
+        offset:self.state.offset+1
       })
+      console.log('state_after',this.state)
     }, 
       error => console.log(error)
     )
-    console.log(this.state);
   }
 
   searchQuery(evt){
@@ -50,23 +54,39 @@ export default class App extends Component {
   }
 
   render() {
-    let count = 0;
-    return (
-      <div className="App">
-        <form onSubmit={this.getGif} >
-          <input type="text" onChange={this.searchQuery}/>
-        </form>
+    if (this.state.data.images) {
+      let count = 0;
+      return (
+        <div className="App">
+          <form onSubmit={this.getGif} >
+            <input type="text" onChange={this.searchQuery}/>
+          </form>
 
-        <button onClick={this.more} style={{display: this.state.offset==0 ? 'none' : 'block' }}>
-          More!!!
-        </button>
-        {
-          this.state.data.map(img=>
-            <img src={img.images.fixed_width_small.url} key={count++}/>
-          ) 
-        }
-      </div>
-    );
+          <button onClick={this.more} style={{display: this.state.offset==0 ? 'none' : 'block' }}>
+            More!!!
+          </button>
+          {
+            <img src={this.state.data.images.downsized_medium.url} />
+            /*this.state.data.map(img=>
+              <img src={img.images.downsized.url} key={count++}/>
+            )*/ 
+          }
+        </div>
+      );
+    }
+    else {
+      return (
+        <div className="App">
+          <form onSubmit={this.getGif} >
+            <input type="text" onChange={this.searchQuery}/>
+          </form>
+
+          <button onClick={this.more} style={{display: this.state.offset==0 ? 'none' : 'block' }}>
+            More!!!
+          </button>
+        </div>
+      ); 
+    }
   }
 
 }
