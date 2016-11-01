@@ -21479,11 +21479,7 @@
 	  }, {
 	    key: 'more',
 	    value: function more() {
-	      this.setState({
-	        offset: this.state.offset + 25
-	      });
 	      this.getGif();
-	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'getGif',
@@ -21504,6 +21500,7 @@
 	      }, function (error) {
 	        return console.log(error);
 	      });
+	      console.log(this.state);
 	    }
 	  }, {
 	    key: 'searchQuery',

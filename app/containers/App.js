@@ -20,11 +20,7 @@ export default class App extends Component {
   }
 
   more(){
-    this.setState({
-      offset: this.state.offset+25
-    })
     this.getGif()
-    console.log(this.state)
   }
 
   getGif(e){
@@ -44,6 +40,7 @@ export default class App extends Component {
     }, 
       error => console.log(error)
     )
+    console.log(this.state);
   }
 
   searchQuery(evt){
