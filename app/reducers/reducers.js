@@ -1,47 +1,22 @@
-/*var initialState = {
-  location: '',
-  data: {},
-  dates: [],
-  temps: [],
-  selected: {
-    date: '',
-    temp: null
-  }
-};
+//import {combineReducers} from 'redux';
 
-export default function mainReducer(state = initialState, action) {
+
+
+function mainReducer(state = {}, action) {
   switch (action.type) {
-    case 'CHANGE_LOCATION':
+    case "SELECT_CATEGORY":
       return Object.assign({}, state, {
-        location: action.location
-      });
-    case 'SET_DATA':
+        selectedCategory: action.category
+      })
+    case "RECIVE_DATA":
       return Object.assign({}, state, {
-        data: action.data
-      });
-    case 'SET_DATES':
-      return Object.assign({}, state, {
-        dates: action.dates
-      });
-    case 'SET_TEMPS':
-      return Object.assign({}, state, {
-        temps: action.temps
-      });
-    case 'SET_SELECTED_DATE':
-      return Object.assign({}, state, {
-        selected: {
-          date: action.date,
-          temp: state.selected.temp
-        }
-      });
-    case 'SET_SELECTED_TEMP':
-      return Object.assign({}, state, {
-        selected: {
-          date: state.selected.date,
-          temp: action.temp
-        }
-      });
+        [action.category]:action.json,
+      })
     default:
-      return state;
+      return state
   }
-}*/
+}
+
+
+
+export default mainReducer;

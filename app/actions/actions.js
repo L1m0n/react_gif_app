@@ -1,17 +1,32 @@
-import fetch from 'isomorphic-fetch';
+import getJSON from '../services/getjson';
 
-export function fetchData(fetchOffset, url){
+export function fetchData(fetchOffset, category, query){
   return function(dispatch) {
-    return fetch(url)
-      .then(response => response.json())
-      .then(dispatch(reciveData(data)))
+    let cat = category
+    getJSON(`http://api.giphy.com/v1/${category}/search?q=${query}&api_key=dc6zaTOxFJmzC&offset=${fetchOffset}`)
+      .then(res=>{
+        let data = res.data.map(it => {
+          return {
+            img_sm:it.images.fixed_height_small.url,
+            img_original: it.images.original.url
+          }
+        })
+        let json = {
+          data: data,
+          total: res.pagination.total_count,
+          offset: res.pagination.offset,
+          count: res.pagination.count
+        }
+        dispatch(reciveData(category, json))
+      })
   }
 }
 
-export function reciveData(data){
+export function reciveData(category, json){
   return {
     type:"RECIVE_DATA",
-    data
+    category,
+    json
   }
 }
 
@@ -22,7 +37,7 @@ export function selectCategory(category) {
   }
 }
 
-export function nextPage(pageOffset) {
+/*export function nextPage(pageOffset) {
   return {
     type:"MOVE_NEXT",
     pageOffset
@@ -34,26 +49,5 @@ export function prevPage(pageOffset) {
     type:"MOVE_PREV",
     pageOffset
   }
-}
+}*/
 
-{
-  selectedCatefory:'gifs',
-  gifs:{
-    fetchOffset:0,
-    offsetPerQuery:25,
-    pageOffset:0,
-    total: 100500,
-    data: [
-      {
-        id:0,
-        url_sm:'www',
-        url_lg:'www'
-      },
-      {
-        id:1,
-        url_sm:'www',
-        url_lg:'www'
-      }
-    ]
-  }
-}

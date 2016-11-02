@@ -1,92 +1,56 @@
 import React, {Component} from 'react';
-import getJSON from '../services/getjson.js';
+import {connect} from 'react-redux';
+import {selectCategory, fetchData} from '../actions/actions'
 
-export default class App extends Component {
+class App extends Component {
 
 
   constructor(props) {
     super(props);
-    this.getGif = this.getGif.bind(this);
-    this.searchQuery = this.searchQuery.bind(this);
-    this.more = this.more.bind(this)
-    this.state = {
-      data : [],
-      offset:0
-    }
+    this.getData = this.getData.bind(this)
+    this.changeCategory = this.changeCategory.bind(this)
   }
 
   componentDidMount() {
-
+  	const {dispatch} = this.props
   }
 
-  more(){
-    this.getGif()
+  getData(query){
+    const {dispatch} = this.props
+    const category = this.props.store.selectedCategory
+    dispatch(fetchData(0, category, query))
   }
 
-  getGif(e){
-    if(e)e.preventDefault();
-
-    console.log('state_after',this.state)
-    let self = this
-    let query = encodeURIComponent(this.state.query) 
-    let urlPrefix = "http://api.giphy.com/v1/gifs/translate?s=";
-    let apiKey = '&api_key=dc6zaTOxFJmzC';
-    let offset = "&offset="+this.state.offset
-
-    let url = urlPrefix+query+apiKey+offset;
-    let data = getJSON(url);
-
-    data.then(result => {
-      self.setState({
-        data: result.data,
-        offset:self.state.offset+1
-      })
-      console.log('state_after',this.state)
-    }, 
-      error => console.log(error)
-    )
-  }
-
-  searchQuery(evt){
-    this.setState({
-      query:evt.target.value
-    })
+  changeCategory(category){
+    const {dispatch} = this.props
+    dispatch(selectCategory(category))
   }
 
   render() {
-    if (this.state.data.images) {
-      let count = 0;
-      return (
-        <div className="App">
-          <form onSubmit={this.getGif} >
-            <input type="text" onChange={this.searchQuery}/>
-          </form>
-
-          <button onClick={this.more} style={{display: this.state.offset==0 ? 'none' : 'block' }}>
-            More!!!
-          </button>
-          {
-            <img src={this.state.data.images.downsized_medium.url} />
-            /*this.state.data.map(img=>
-              <img src={img.images.downsized.url} key={count++}/>
-            )*/ 
-          }
-        </div>
-      );
-    }
-    else {
-      return (
-        <div className="App">
-          <form onSubmit={this.getGif} >
-            <input type="text" onChange={this.searchQuery}/>
-          </form>
-
-          <button onClick={this.more} style={{display: this.state.offset==0 ? 'none' : 'block' }}>
-            More!!!
-          </button>
-        </div>
-      ); 
-    }
+    let input
+  	return (
+  		<div>
+        <select onChange={e=>{
+          this.changeCategory(e.target.value)
+        }}>
+          <option>gifs</option>
+          <option>stickers</option>
+        </select>
+        <form onSubmit={ evt => {
+          evt.preventDefault();
+          this.getData(input.value);
+        }}>
+          <input type="text" ref={node => input = node}/>
+        </form>
+  		</div>
+  	)
   }
-
 }
+
+function mapStateToProps(state) {
+	return {
+		store: state
+	}
+}
+
+ export default connect(mapStateToProps)(App)
