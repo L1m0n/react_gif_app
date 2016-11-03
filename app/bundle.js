@@ -77,13 +77,7 @@
 	var loggerMiddleware = (0, _reduxLogger2.default)();
 	
 	var initialState = {
-		selectedCategory: 'gifs',
-		gifs: {
-			fetchOffset: 0,
-			offsetPerQuery: 25,
-			total: 0,
-			data: []
-		}
+		selectedCategory: 'gifs'
 	};
 	
 	var store = (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.applyMiddleware)(loggerMiddleware, _reduxThunk2.default));
@@ -23261,6 +23255,28 @@
 	      dispatch((0, _actions.fetchData)(0, category, query));
 	    }
 	  }, {
+	    key: 'getNext',
+	    value: function getNext() {
+	      var dispatch = this.props.dispatch;
+	      var _props$store$props$st = this.props.store[this.props.store.selectedCategory],
+	          offset = _props$store$props$st.offset,
+	          query = _props$store$props$st.query,
+	          count = _props$store$props$st.count;
+	
+	      dispatch((0, _actions.fetchData)(offset + count, this.props.store.selectedCategory, query));
+	    }
+	  }, {
+	    key: 'getPrev',
+	    value: function getPrev() {
+	      var dispatch = this.props.dispatch;
+	      var _props$store$props$st2 = this.props.store[this.props.store.selectedCategory],
+	          offset = _props$store$props$st2.offset,
+	          query = _props$store$props$st2.query,
+	          count = _props$store$props$st2.count;
+	
+	      dispatch((0, _actions.fetchData)(offset - count, this.props.store.selectedCategory, query));
+	    }
+	  }, {
 	    key: 'changeCategory',
 	    value: function changeCategory(category) {
 	      var dispatch = this.props.dispatch;
@@ -23273,6 +23289,7 @@
 	      var _this2 = this;
 	
 	      var input = void 0;
+	      var count = 0;
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -23297,10 +23314,32 @@
 	          { onSubmit: function onSubmit(evt) {
 	              evt.preventDefault();
 	              _this2.getData(input.value);
+	              input.value = "";
 	            } },
 	          _react2.default.createElement('input', { type: 'text', ref: function ref(node) {
 	              return input = node;
 	            } })
+	        ),
+	        this.props.store[this.props.store.selectedCategory] && _react2.default.createElement(
+	          'button',
+	          { onClick: function onClick(e) {
+	              _this2.getPrev();
+	            } },
+	          'prev'
+	        ),
+	        this.props.store[this.props.store.selectedCategory] && _react2.default.createElement(
+	          'button',
+	          { onClick: function onClick(e) {
+	              _this2.getNext();
+	            } },
+	          'next'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.props.store[this.props.store.selectedCategory] && this.props.store[this.props.store.selectedCategory].data.map(function (item) {
+	            return _react2.default.createElement('img', { src: item.img_sm, key: count++ });
+	          })
 	        )
 	      );
 	    }
@@ -23348,10 +23387,12 @@
 	      });
 	      var json = {
 	        data: data,
+	        query: query,
 	        total: res.pagination.total_count,
 	        offset: res.pagination.offset,
 	        count: res.pagination.count
 	      };
+	      console.log(json.offset, res.pagination.offset);
 	      dispatch(reciveData(category, json));
 	    });
 	  };

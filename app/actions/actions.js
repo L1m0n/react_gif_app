@@ -13,10 +13,12 @@ export function fetchData(fetchOffset, category, query){
         })
         let json = {
           data: data,
+          query:query,
           total: res.pagination.total_count,
           offset: res.pagination.offset,
           count: res.pagination.count
         }
+        console.log(json.offset, res.pagination.offset);
         dispatch(reciveData(category, json))
       })
   }

@@ -10,13 +10,7 @@ import thunkMiddleware from 'redux-thunk';
 const loggerMiddleware = createLogger();
 
 const initialState = {
-	selectedCategory:'gifs',
-	gifs:{
-		fetchOffset:0,
-		offsetPerQuery:25,
-		total:0,
-		data:[]
-	}
+	selectedCategory:'gifs'
 }
 
 const store = createStore(

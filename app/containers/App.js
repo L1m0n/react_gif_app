@@ -21,6 +21,20 @@ class App extends Component {
     dispatch(fetchData(0, category, query))
   }
 
+  getNext(){
+    const {dispatch} = this.props
+    const {offset, query, count} = this.props.store[this.props.store.selectedCategory]
+    dispatch(fetchData(offset+count, this.props.store.selectedCategory , query))
+
+  }
+
+  getPrev(){
+    const {dispatch} = this.props
+    const {offset, query, count} = this.props.store[this.props.store.selectedCategory]
+    dispatch(fetchData(offset-count, this.props.store.selectedCategory , query))
+
+  }
+
   changeCategory(category){
     const {dispatch} = this.props
     dispatch(selectCategory(category))
@@ -28,6 +42,7 @@ class App extends Component {
 
   render() {
     let input
+    let count = 0
   	return (
   		<div>
         <select onChange={e=>{
@@ -39,9 +54,32 @@ class App extends Component {
         <form onSubmit={ evt => {
           evt.preventDefault();
           this.getData(input.value);
+          input.value = ""
         }}>
           <input type="text" ref={node => input = node}/>
         </form>
+        {this.props.store[this.props.store.selectedCategory] &&
+          <button onClick={e=>{
+            this.getPrev()
+          }}>
+            prev
+          </button>
+        }
+        {this.props.store[this.props.store.selectedCategory] &&
+          <button onClick={e=>{
+            this.getNext()
+          }}>
+            next
+          </button>
+        }
+        <div>
+          {
+            this.props.store[this.props.store.selectedCategory] &&
+              this.props.store[this.props.store.selectedCategory].data.map(item =>
+                <img src={item.img_sm} key={count++} />
+              )
+          }
+        </div>
   		</div>
   	)
   }
