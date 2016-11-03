@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {selectCategory, fetchData} from '../actions/actions'
 
+require('./App.scss')
+
 class App extends Component {
 
 
@@ -56,7 +58,7 @@ class App extends Component {
           this.getData(input.value);
           input.value = ""
         }}>
-          <input type="text" ref={node => input = node}/>
+          <input type="text" className="query-input" ref={node => input = node}/>
         </form>
         {this.props.store[this.props.store.selectedCategory] &&
           <button onClick={e=>{

@@ -1,6 +1,25 @@
-#root {
-  max-width: 920px;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: rgba(145, 255, 252, 0.7);
+  padding-top: 20px; }
+
+.query-input {
+  max-width: 320px;
   width: 100%;
-  margin: 0 auto; }
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: none;
+  border: 2px solid #8686fc; }
+
+select {
+  height: 40px;
+  border-radius: 4px;
+  box-shadow: none;
+  border: 2px solid #8686fc;
+  margin-bottom: 20px; }
 
 /*# sourceMappingURL=styles.css.map*/

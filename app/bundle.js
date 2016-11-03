@@ -60,15 +60,15 @@
 	
 	var _redux = __webpack_require__(179);
 	
-	var _reducers = __webpack_require__(205);
+	var _reducers = __webpack_require__(209);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _reduxLogger = __webpack_require__(206);
+	var _reduxLogger = __webpack_require__(210);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reduxThunk = __webpack_require__(212);
+	var _reduxThunk = __webpack_require__(216);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
@@ -23228,6 +23228,8 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	__webpack_require__(205);
+	
 	var App = function (_Component) {
 	  _inherits(App, _Component);
 	
@@ -23316,7 +23318,7 @@
 	              _this2.getData(input.value);
 	              input.value = "";
 	            } },
-	          _react2.default.createElement('input', { type: 'text', ref: function ref(node) {
+	          _react2.default.createElement('input', { type: 'text', className: 'query-input', ref: function ref(node) {
 	              return input = node;
 	            } })
 	        ),
@@ -23459,6 +23461,15 @@
 /* 205 */
 /***/ function(module, exports) {
 
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */
+/***/ function(module, exports) {
+
 	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
@@ -23489,7 +23500,7 @@
 	exports.default = mainReducer;
 
 /***/ },
-/* 206 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23500,11 +23511,11 @@
 	  value: true
 	});
 	
-	var _core = __webpack_require__(207);
+	var _core = __webpack_require__(211);
 	
-	var _helpers = __webpack_require__(208);
+	var _helpers = __webpack_require__(212);
 	
-	var _defaults = __webpack_require__(211);
+	var _defaults = __webpack_require__(215);
 	
 	var _defaults2 = _interopRequireDefault(_defaults);
 	
@@ -23607,7 +23618,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 207 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23617,9 +23628,9 @@
 	});
 	exports.printBuffer = printBuffer;
 	
-	var _helpers = __webpack_require__(208);
+	var _helpers = __webpack_require__(212);
 	
-	var _diff = __webpack_require__(209);
+	var _diff = __webpack_require__(213);
 	
 	var _diff2 = _interopRequireDefault(_diff);
 	
@@ -23748,7 +23759,7 @@
 	}
 
 /***/ },
-/* 208 */
+/* 212 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23772,7 +23783,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 209 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23782,7 +23793,7 @@
 	});
 	exports.default = diffLogger;
 	
-	var _deepDiff = __webpack_require__(210);
+	var _deepDiff = __webpack_require__(214);
 	
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 	
@@ -23868,7 +23879,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 210 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -24297,7 +24308,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 211 */
+/* 215 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24348,7 +24359,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 212 */
+/* 216 */
 /***/ function(module, exports) {
 
 	'use strict';
