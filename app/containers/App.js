@@ -77,18 +77,17 @@ class App extends Component {
         <div>
           {
             this.props.store[this.props.store.selectedCategory] && 
-            [0,1,2,3,4].map(item => <div>{this.props.store[this.props.store.selectedCategory].data[item].map(
-              img=><img src={img.img_sm} />)}</div>)
+            [0,1,2,3,4].map(item => 
+              <div className="col">{
+                this.props.store[this.props.store.selectedCategory].data[item].map(
+                  img=><img src={img.img_sm} />)
+              }</div>)
           }
         </div>
   		</div>
   	)
   }
 }
-/*this.props.store[this.props.store.selectedCategory] &&
-this.props.store[this.props.store.selectedCategory].data.map(item =>
-  <img src={item.img_sm} key={count++} />
-)*/
 
 function mapStateToProps(state) {
 	return {

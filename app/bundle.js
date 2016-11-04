@@ -23342,7 +23342,7 @@
 	          this.props.store[this.props.store.selectedCategory] && [0, 1, 2, 3, 4].map(function (item) {
 	            return _react2.default.createElement(
 	              'div',
-	              null,
+	              { className: 'col' },
 	              _this2.props.store[_this2.props.store.selectedCategory].data[item].map(function (img) {
 	                return _react2.default.createElement('img', { src: img.img_sm });
 	              })
@@ -23355,10 +23355,6 @@
 	
 	  return App;
 	}(_react.Component);
-	/*this.props.store[this.props.store.selectedCategory] &&
-	this.props.store[this.props.store.selectedCategory].data.map(item =>
-	  <img src={item.img_sm} key={count++} />
-	)*/
 	
 	function mapStateToProps(state) {
 	  return {
@@ -23397,7 +23393,7 @@
 	        var obj = [];
 	        for (var o = 0; o < 5; o++) {
 	          var it = {
-	            img_sm: res.data[counter].images.fixed_width_small.url,
+	            img_sm: res.data[counter].images.fixed_width.url,
 	            img_original: res.data[counter].images.original.url
 	          };
 	          counter++;

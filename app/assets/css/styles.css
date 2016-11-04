@@ -15,6 +15,12 @@
   box-shadow: none;
   border: 2px solid #8686fc; }
 
+.col {
+  display: inline-block;
+  width: 210px;
+  padding: 5px;
+  vertical-align: top; }
+
 select {
   height: 40px;
   border-radius: 4px;
