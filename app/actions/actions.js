@@ -6,13 +6,15 @@ export function fetchData(fetchOffset, category, query){
     getJSON(`http://api.giphy.com/v1/${category}/search?q=${query}&api_key=dc6zaTOxFJmzC&offset=${fetchOffset}`)
       .then(res=>{
         let data = [];
+        let counter = 0
         for (let i = 0; i < 5; i++) {
           let obj = []
           for (let o = 0; o < 5; o++) {
             let it = {
-              img_sm:res.data[i].images.fixed_width_small.url,
-              img_original: res.data[i].images.original.url
+              img_sm:res.data[counter].images.fixed_width_small.url,
+              img_original: res.data[counter].images.original.url
             }
+            counter++
             obj.push(it)
           }
           data.push(obj)

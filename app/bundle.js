@@ -60,15 +60,15 @@
 	
 	var _redux = __webpack_require__(179);
 	
-	var _reducers = __webpack_require__(203);
+	var _reducers = __webpack_require__(209);
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
 	
-	var _reduxLogger = __webpack_require__(204);
+	var _reduxLogger = __webpack_require__(210);
 	
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 	
-	var _reduxThunk = __webpack_require__(210);
+	var _reduxThunk = __webpack_require__(216);
 	
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 	
@@ -23218,7 +23218,7 @@
 	
 	var _reactRedux = __webpack_require__(172);
 	
-	var _actions = __webpack_require__(211);
+	var _actions = __webpack_require__(203);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -23228,7 +23228,7 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	__webpack_require__(213);
+	__webpack_require__(205);
 	
 	var App = function (_Component) {
 	  _inherits(App, _Component);
@@ -23339,8 +23339,14 @@
 	        _react2.default.createElement(
 	          'div',
 	          null,
-	          this.props.store[this.props.store.selectedCategory] && this.props.store[this.props.store.selectedCategory].data.map(function (item) {
-	            return _react2.default.createElement('img', { src: item.img_sm, key: count++ });
+	          this.props.store[this.props.store.selectedCategory] && [0, 1, 2, 3, 4].map(function (item) {
+	            return _react2.default.createElement(
+	              'div',
+	              null,
+	              _this2.props.store[_this2.props.store.selectedCategory].data[item].map(function (img) {
+	                return _react2.default.createElement('img', { src: img.img_sm });
+	              })
+	            );
 	          })
 	        )
 	      );
@@ -23349,6 +23355,10 @@
 	
 	  return App;
 	}(_react.Component);
+	/*this.props.store[this.props.store.selectedCategory] &&
+	this.props.store[this.props.store.selectedCategory].data.map(item =>
+	  <img src={item.img_sm} key={count++} />
+	)*/
 	
 	function mapStateToProps(state) {
 	  return {
@@ -23360,6 +23370,129 @@
 
 /***/ },
 /* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.fetchData = fetchData;
+	exports.reciveData = reciveData;
+	exports.selectCategory = selectCategory;
+	
+	var _getjson = __webpack_require__(204);
+	
+	var _getjson2 = _interopRequireDefault(_getjson);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function fetchData(fetchOffset, category, query) {
+	  return function (dispatch) {
+	    var cat = category;
+	    (0, _getjson2.default)("http://api.giphy.com/v1/" + category + "/search?q=" + query + "&api_key=dc6zaTOxFJmzC&offset=" + fetchOffset).then(function (res) {
+	      var data = [];
+	      var counter = 0;
+	      for (var i = 0; i < 5; i++) {
+	        var obj = [];
+	        for (var o = 0; o < 5; o++) {
+	          var it = {
+	            img_sm: res.data[counter].images.fixed_width_small.url,
+	            img_original: res.data[counter].images.original.url
+	          };
+	          counter++;
+	          obj.push(it);
+	        }
+	        data.push(obj);
+	      }
+	      console.log(data);
+	
+	      /*let data = res.data.map(it => {
+	        return {
+	          img_sm:it.images.fixed_width_small.url,
+	          img_original: it.images.original.url
+	        }
+	      })*/
+	      var json = {
+	        data: data,
+	        query: query,
+	        total: res.pagination.total_count,
+	        offset: res.pagination.offset,
+	        count: res.pagination.count
+	      };
+	      dispatch(reciveData(category, json));
+	    });
+	  };
+	}
+	
+	function reciveData(category, json) {
+	  return {
+	    type: "RECIVE_DATA",
+	    category: category,
+	    json: json
+	  };
+	}
+	
+	function selectCategory(category) {
+	  return {
+	    type: "SELECT_CATEGORY",
+	    category: category
+	  };
+	}
+	
+	/*export function nextPage(pageOffset) {
+	  return {
+	    type:"MOVE_NEXT",
+	    pageOffset
+	  }
+	}
+
+	export function prevPage(pageOffset) {
+	  return {
+	    type:"MOVE_PREV",
+	    pageOffset
+	  }
+	}*/
+
+/***/ },
+/* 204 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	function getJSON(url) {
+	  return new Promise(function (resolve, reject) {
+	    var xhr = new XMLHttpRequest();
+	    xhr.open('get', url, true);
+	    xhr.responseType = 'json';
+	    xhr.onload = function () {
+	      var status = xhr.status;
+	      if (status == 200) {
+	        resolve(xhr.response);
+	      } else {
+	        reject(status);
+	      }
+	    };
+	    xhr.send();
+	  });
+	};
+	
+	exports.default = getJSON;
+
+/***/ },
+/* 205 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23392,7 +23525,7 @@
 	exports.default = mainReducer;
 
 /***/ },
-/* 204 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23403,11 +23536,11 @@
 	  value: true
 	});
 	
-	var _core = __webpack_require__(205);
+	var _core = __webpack_require__(211);
 	
-	var _helpers = __webpack_require__(206);
+	var _helpers = __webpack_require__(212);
 	
-	var _defaults = __webpack_require__(209);
+	var _defaults = __webpack_require__(215);
 	
 	var _defaults2 = _interopRequireDefault(_defaults);
 	
@@ -23510,7 +23643,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 205 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23520,9 +23653,9 @@
 	});
 	exports.printBuffer = printBuffer;
 	
-	var _helpers = __webpack_require__(206);
+	var _helpers = __webpack_require__(212);
 	
-	var _diff = __webpack_require__(207);
+	var _diff = __webpack_require__(213);
 	
 	var _diff2 = _interopRequireDefault(_diff);
 	
@@ -23651,7 +23784,7 @@
 	}
 
 /***/ },
-/* 206 */
+/* 212 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -23675,7 +23808,7 @@
 	var timer = exports.timer = typeof performance !== "undefined" && performance !== null && typeof performance.now === "function" ? performance : Date;
 
 /***/ },
-/* 207 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -23685,7 +23818,7 @@
 	});
 	exports.default = diffLogger;
 	
-	var _deepDiff = __webpack_require__(208);
+	var _deepDiff = __webpack_require__(214);
 	
 	var _deepDiff2 = _interopRequireDefault(_deepDiff);
 	
@@ -23771,7 +23904,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 208 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {/*!
@@ -24200,7 +24333,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 209 */
+/* 215 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -24251,7 +24384,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 210 */
+/* 216 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -24277,124 +24410,6 @@
 	thunk.withExtraArgument = createThunkMiddleware;
 	
 	exports['default'] = thunk;
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.fetchData = fetchData;
-	exports.reciveData = reciveData;
-	exports.selectCategory = selectCategory;
-	
-	var _getjson = __webpack_require__(212);
-	
-	var _getjson2 = _interopRequireDefault(_getjson);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function fetchData(fetchOffset, category, query) {
-	  return function (dispatch) {
-	    var cat = category;
-	    (0, _getjson2.default)("http://api.giphy.com/v1/" + category + "/search?q=" + query + "&api_key=dc6zaTOxFJmzC&offset=" + fetchOffset).then(function (res) {
-	      var data = [];
-	      for (var i = 0; i < 5; i++) {
-	        var obj = [];
-	        for (var o = 0; o < 5; o++) {
-	          var it = {
-	            img_sm: res.data[i].images.fixed_width_small.url,
-	            img_original: res.data[i].images.original.url
-	          };
-	          obj.push(it);
-	        }
-	        data.push(obj);
-	      }
-	      console.log(data);
-	
-	      /*let data = res.data.map(it => {
-	        return {
-	          img_sm:it.images.fixed_width_small.url,
-	          img_original: it.images.original.url
-	        }
-	      })*/
-	      var json = {
-	        data: data,
-	        query: query,
-	        total: res.pagination.total_count,
-	        offset: res.pagination.offset,
-	        count: res.pagination.count
-	      };
-	      dispatch(reciveData(category, json));
-	    });
-	  };
-	}
-	
-	function reciveData(category, json) {
-	  return {
-	    type: "RECIVE_DATA",
-	    category: category,
-	    json: json
-	  };
-	}
-	
-	function selectCategory(category) {
-	  return {
-	    type: "SELECT_CATEGORY",
-	    category: category
-	  };
-	}
-	
-	/*export function nextPage(pageOffset) {
-	  return {
-	    type:"MOVE_NEXT",
-	    pageOffset
-	  }
-	}
-
-	export function prevPage(pageOffset) {
-	  return {
-	    type:"MOVE_PREV",
-	    pageOffset
-	  }
-	}*/
-
-/***/ },
-/* 212 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	function getJSON(url) {
-	  return new Promise(function (resolve, reject) {
-	    var xhr = new XMLHttpRequest();
-	    xhr.open('get', url, true);
-	    xhr.responseType = 'json';
-	    xhr.onload = function () {
-	      var status = xhr.status;
-	      if (status == 200) {
-	        resolve(xhr.response);
-	      } else {
-	        reject(status);
-	      }
-	    };
-	    xhr.send();
-	  });
-	};
-	
-	exports.default = getJSON;
-
-/***/ },
-/* 213 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
