@@ -11,7 +11,8 @@ export function fetchData(fetchOffset, category, query){
           for (let o = 0; o < 5; o++) {
             let it = {
               img_sm:res.data[counter].images.fixed_width_still.url,
-              img_original: res.data[counter].images.fixed_width.url
+              img_original: res.data[counter].images.fixed_width.url,
+              loaded: false
             }
             counter++
             obj.push(it)

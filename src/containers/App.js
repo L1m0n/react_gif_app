@@ -86,7 +86,7 @@ class App extends Component {
               <div className="col">{
                 this.props.store[this.props.store.selectedCategory].data[item].map(
                   img=>
-                    <Image  src={img.img_sm} key={count++} gifSrc={img.img_original} />)
+                    <Image  src={img.img_sm} key={count++} gifSrc={img.img_original} loaded={img.loaded} />)
               }</div>)
           }
         </div>

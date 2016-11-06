@@ -4,6 +4,12 @@
 	position: relative;
 }
 
+.image-container {
+	overflow: hidden;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+
 .image__thumbnail {
 	z-index: 3;
 }
