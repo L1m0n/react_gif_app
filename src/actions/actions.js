@@ -2,7 +2,6 @@ import getJSON from '../services/getjson';
 
 export function fetchData(fetchOffset, category, query){
   return function(dispatch) {
-    let cat = category
     getJSON(`http://api.giphy.com/v1/${category}/search?q=${query}&api_key=dc6zaTOxFJmzC&offset=${fetchOffset}`)
       .then(res=>{
         let data = [];
@@ -11,8 +10,8 @@ export function fetchData(fetchOffset, category, query){
           let obj = []
           for (let o = 0; o < 5; o++) {
             let it = {
-              img_sm:res.data[counter].images.fixed_width.url,
-              img_original: res.data[counter].images.original.url
+              img_sm:res.data[counter].images.fixed_width_still.url,
+              img_original: res.data[counter].images.fixed_width.url
             }
             counter++
             obj.push(it)

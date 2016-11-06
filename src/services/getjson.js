@@ -5,7 +5,7 @@ function getJSON(url) {
     xhr.responseType = 'json';
     xhr.onload = function() {
       var status = xhr.status;
-      if (status == 200) {
+      if (status === 200) {
         resolve(xhr.response);
       } else {
         reject(status);

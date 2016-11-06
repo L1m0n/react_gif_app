@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {selectCategory, fetchData} from '../actions/actions'
+import {selectCategory, fetchData} from '../actions/actions';
+import Image from '../components/Image'
 
-require('./App.scss')
+//require('./App.scss')
 
 class App extends Component {
 
@@ -14,7 +15,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-  	const {dispatch} = this.props
+  	
   }
 
   getData(query){
@@ -35,6 +36,10 @@ class App extends Component {
     const {offset, query, count} = this.props.store[this.props.store.selectedCategory]
     dispatch(fetchData(offset-count, this.props.store.selectedCategory , query))
 
+  }
+
+  hoverHandler(){
+    
   }
 
   changeCategory(category){
@@ -80,7 +85,8 @@ class App extends Component {
             [0,1,2,3,4].map(item => 
               <div className="col">{
                 this.props.store[this.props.store.selectedCategory].data[item].map(
-                  img=><img src={img.img_sm} />)
+                  img=>
+                    <Image  src={img.img_sm} key={count++} gifSrc={img.img_original} />)
               }</div>)
           }
         </div>

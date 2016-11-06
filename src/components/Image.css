@@ -1,0 +1,19 @@
+.image-container,
+.image__thumbnail,
+.image__gif {
+	position: relative;
+}
+
+.image__thumbnail {
+	z-index: 3;
+}
+.image__gif {
+	z-index: 2;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.image-container:hover .image__thumbnail {
+	pointer-events: none;
+	opacity: 0;
+}
