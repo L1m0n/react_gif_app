@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import App from './containers/App';
+import Root from './containers/Root';
 import {createStore, applyMiddleware} from 'redux';
 import mainReducer from './reducers/reducers';
 import createLogger from 'redux-logger';
@@ -10,7 +10,8 @@ import thunkMiddleware from 'redux-thunk';
 const loggerMiddleware = createLogger();
 
 const initialState = {
-	selectedCategory:'gifs'
+	selectedCategory:'gifs',
+	data: {}
 }
 
 const store = createStore(
@@ -24,7 +25,7 @@ const store = createStore(
 
 render (
 	<Provider store={store}>
-		<App />
+		<Root />
 	</Provider>,
 	document.getElementById('app')
 )

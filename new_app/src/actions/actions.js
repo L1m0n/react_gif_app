@@ -7,36 +7,34 @@ export function fetchData(fetchOffset, category, query){
 
         let data = res.data.map(item => {
           return {
-            img_sm:item.images.fixed_width_still.url,
-            img_original: item.images.fixed_width.url,
+            thumbnail:item.images.fixed_width_still.url,
+            gif: item.images.fixed_width.url,
             id: item.id,
             loaded: false
           }
         })
         let json = {
-          data: data,
+          items: data,
           query:query,
           total: res.pagination.total_count,
           offset: res.pagination.offset,
           count: res.pagination.count
         }
-        dispatch(reciveData(category, json))
+        dispatch(reciveData(json))
       })
   }
 }
 
-export function changeStatus(id, category){
+export function changeLoadedStatus(id){
   return {
     type: "CHANGE_STATUS",
-    id,
-    category
+    id
   }
 }
 
-export function reciveData(category, json){
+export function reciveData(json){
   return {
     type:"RECIVE_DATA",
-    category,
     json
   }
 }
