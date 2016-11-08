@@ -1,10 +1,11 @@
 import React from 'react';
 import ImagesContainer from './ImagesContainer';
-import App from './App';
+import ControlsContainer from './ControlsContainer';
+//import App from './App';
 
 const Root = () => (
 	<div>
-		<App />
+		<ControlsContainer />
 		<ImagesContainer />
 	</div>
 )
