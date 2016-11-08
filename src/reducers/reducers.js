@@ -12,6 +12,8 @@ function mainReducer(state = {}, action) {
       return Object.assign({}, state, {
         [action.category]:action.json,
       })
+    case "CHANGE_STATUS":
+      return state
     default:
       return state
   }

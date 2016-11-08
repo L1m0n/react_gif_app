@@ -4,29 +4,15 @@ export function fetchData(fetchOffset, category, query){
   return function(dispatch) {
     getJSON(`http://api.giphy.com/v1/${category}/search?q=${query}&api_key=dc6zaTOxFJmzC&offset=${fetchOffset}`)
       .then(res=>{
-        let data = [];
-        let counter = 0
-        for (let i = 0; i < 5; i++) {
-          let obj = []
-          for (let o = 0; o < 5; o++) {
-            let it = {
-              img_sm:res.data[counter].images.fixed_width_still.url,
-              img_original: res.data[counter].images.fixed_width.url,
-              loaded: false
-            }
-            counter++
-            obj.push(it)
-          }
-          data.push(obj)
-        }
-        console.log(data)
 
-        /*let data = res.data.map(it => {
+        let data = res.data.map(item => {
           return {
-            img_sm:it.images.fixed_width_small.url,
-            img_original: it.images.original.url
+            img_sm:item.images.fixed_width_still.url,
+            img_original: item.images.fixed_width.url,
+            id: item.id,
+            loaded: false
           }
-        })*/
+        })
         let json = {
           data: data,
           query:query,
@@ -36,6 +22,14 @@ export function fetchData(fetchOffset, category, query){
         }
         dispatch(reciveData(category, json))
       })
+  }
+}
+
+export function changeStatus(id, category){
+  return {
+    type: "CHANGE_STATUS",
+    id,
+    category
   }
 }
 

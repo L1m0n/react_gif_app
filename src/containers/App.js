@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {selectCategory, fetchData} from '../actions/actions';
+import {selectCategory, fetchData, changeStatus} from '../actions/actions';
 import Image from '../components/Image'
 
 //require('./App.scss')
@@ -12,6 +12,8 @@ class App extends Component {
     super(props);
     this.getData = this.getData.bind(this)
     this.changeCategory = this.changeCategory.bind(this)
+    this.drawImages = this.drawImages.bind(this)
+    this.changeGifStatus = this.changeGifStatus.bind(this)
   }
 
   componentDidMount() {
@@ -38,8 +40,39 @@ class App extends Component {
 
   }
 
-  hoverHandler(){
-    
+  changeGifStatus(id){
+    const {dispatch} = this.props
+    let category = this.props.store.selectedCategory
+    dispatch(changeStatus(id, category))
+  }
+
+  drawImages(){
+    if (this.props.store[this.props.store.selectedCategory]) {
+    console.log(this.props.store)
+      let counter = 0;
+      let data = this.props.store[this.props.store.selectedCategory].data;
+      let returnedData = [];
+      for (let i = 0; i < 5; i++) {
+        let items = []
+        for (let c = 0; c < 5; c++){
+          let src = data[counter].img_sm;
+          let gif = data[counter].img_original;
+          let id = data[counter].id;
+          let status = data[counter].loaded;
+          items.push(<Image 
+            src={src} 
+            gif={gif} 
+            key={id}
+            id={id}
+            loaded={status}
+            onLoad={e=> this.changeGifStatus}
+          />)
+          counter++
+        }
+        returnedData.push(<div className="col">{items}</div>)
+      }
+      return returnedData
+    }
   }
 
   changeCategory(category){
@@ -49,7 +82,7 @@ class App extends Component {
 
   render() {
     let input
-    let count = 0
+
   	return (
   		<div>
         <select onChange={e=>{
@@ -81,13 +114,7 @@ class App extends Component {
         }
         <div>
           {
-            this.props.store[this.props.store.selectedCategory] && 
-            [0,1,2,3,4].map(item => 
-              <div className="col">{
-                this.props.store[this.props.store.selectedCategory].data[item].map(
-                  img=>
-                    <Image  src={img.img_sm} key={count++} gifSrc={img.img_original} loaded={img.loaded} />)
-              }</div>)
+            this.drawImages()
           }
         </div>
   		</div>
