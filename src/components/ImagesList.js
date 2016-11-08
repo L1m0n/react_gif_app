@@ -11,10 +11,12 @@ const ImagesList = ({ images, onGifLoadAction}) => {
 			for (let o = 0; o < 5; o++){
 				col.push(
 					<Image
-						 src={images[counter].thumbnail} 
+						src={images[counter].thumbnail} 
 						gif={images[counter].gif}
 						key={images[counter].id}
 						loaded={images[counter].loaded}
+						onLoaded={onGifLoadAction}
+						id={images[counter].id}
 					/>
 				)
 				counter++

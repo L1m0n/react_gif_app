@@ -29,7 +29,11 @@ const  mainReducer = (state = {}, action) => {
         data:action.json
       })
     case "CHANGE_STATUS":
-      return items(state.data, action)
+      return Object.assign({}, state, {
+        data:{
+          items: items(state.data.items, action)
+        }
+      })
     default:
       return state
   }
