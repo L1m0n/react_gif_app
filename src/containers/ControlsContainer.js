@@ -5,7 +5,9 @@ import Controls from '../components/Controls';
 const mapStateToProps = (state) => {
 	return {
 		selectedCategory: state.selectedCategory,
-		offset: state.data.offset
+		offset: state.data.offset,
+		count: state.data.count,
+		query: state.data.query
 	}
 }
 
@@ -13,7 +15,13 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		submitForm: (offset, category, query) => {
 			dispatch(fetchData(offset, category, query))
-		}
+		},
+		prev: (offset, category, query) => {
+			dispatch(fetchData(offset, category, query))
+		},
+		next: (offset, category, query) => {
+			dispatch(fetchData(offset, category, query))
+		} 
 	}
 }
 

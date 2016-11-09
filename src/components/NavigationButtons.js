@@ -1,11 +1,11 @@
 import React from 'react';
 
-const NavigationButtons = ({}) => (
+const NavigationButtons = ({ query, category, offset, count, prev, next }) => (
 	<div className="navigation">
-		<button>
+		<button onClick={()=>prev(offset-count, category, query) }>
 			PREV
 		</button>
-		<button>
+		<button onClick={()=>prev(offset+count, category, query) }>
 			NEXT
 		</button>
 	</div>

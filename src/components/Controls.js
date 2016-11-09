@@ -2,7 +2,7 @@ import React from 'react';
 import SearchForm from './SearchForm';
 import NavigationButtons from './NavigationButtons';
 
-const Controls = ({submitForm, selectedCategory, offset=0},) => {
+const Controls = ({submitForm, selectedCategory, offset=0, count, query, next, prev}) => {
 	return(
 		<div className="controls">
 			<SearchForm
@@ -10,11 +10,12 @@ const Controls = ({submitForm, selectedCategory, offset=0},) => {
 				category={selectedCategory}
 			/>
 			<NavigationButtons
-/*				prev={}
-				next={}
+				prev={prev}
+				next={next}
 				offset={offset}
-				query={}
-				count={}*/ 
+				query={query}
+				count={count}
+				category={selectedCategory}
 			/>
 		</div>
 	)

@@ -31,6 +31,7 @@ const  mainReducer = (state = {}, action) => {
     case "CHANGE_STATUS":
       return Object.assign({}, state, {
         data:{
+          ...state.data,
           items: items(state.data.items, action)
         }
       })
