@@ -5,7 +5,7 @@ const NavigationButtons = ({ query, category, offset, count, prev, next }) => (
 		<button onClick={()=>prev(offset-count, category, query) } disabled={ offset===0 } >
 			PREV
 		</button>
-		<button onClick={()=>prev(offset+count, category, query) }>
+		<button onClick={()=>prev(offset+count, category, query) } disabled={ query==="" } >
 			NEXT
 		</button>
 	</div>

@@ -1,4 +1,4 @@
-import {fetchData} from '../actions/actions';
+import {fetchData, selectCategory} from '../actions/actions';
 import {connect} from 'react-redux';
 import Controls from '../components/Controls';
 
@@ -21,6 +21,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		next: (offset, category, query) => {
 			dispatch(fetchData(offset, category, query))
+		},
+		changeCategory: (category) => {
+			dispatch(selectCategory(category))
 		} 
 	}
 }
