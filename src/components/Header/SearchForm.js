@@ -32,16 +32,18 @@ class SearchForm extends Component {
 					input.value = ""
 				}}>
 					<input 
-						placeholder="Type something..." 
 						onChange={(e)=> this.enableButton(e.target.value)}
+						placeholder="What are you looking for?" 
 						ref={node => input = node}
+						className="search-form__input"
 						type="text" 
 					/>
 					<button 
 						disabled={this.state.disabled}
+						className="search-form__button"
 						type="submit"
 					>
-						find
+						Find it!
 					</button>
 				</form>
 			</div>

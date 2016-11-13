@@ -19,16 +19,21 @@ const Header = ({
 	prev
 }) => {
 	return(
-		<div className="controls">
-			<CategoryButtons
-				defaultStickers={getDefaultStickers}
-				changeCategory={changeCategory}
-				offset={offset} 
-			/>
-			<SearchForm
-				category={selectedCategory}
-				onSubmit={submitForm} 
-			/>
+		<div className="header-wrapper">
+			<div className="header">
+				<div className="logo">
+					<img src="logo.svg" alt="Logo"/>
+				</div>	
+				<CategoryButtons
+					defaultStickers={getDefaultStickers}
+					changeCategory={changeCategory}
+					offset={offset} 
+				/>
+				<SearchForm
+					category={selectedCategory}
+					onSubmit={submitForm} 
+				/>
+			</div>
 			<NavigationButtons
 				category={selectedCategory}
 				showDefault={showDefault}
