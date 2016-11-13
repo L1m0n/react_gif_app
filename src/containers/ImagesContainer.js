@@ -1,6 +1,6 @@
 import {changeLoadedStatus} from '../actions/actions'
 import {connect} from 'react-redux';
-import ImagesList from '../components/ImagesList'
+import ImagesList from '../components/Main/ImagesList'
 
 
 const mapStateToProps = (state) => {

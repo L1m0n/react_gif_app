@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
-import Root from './containers/Root';
+import App from './components/App';
 import {createStore, applyMiddleware} from 'redux';
 import mainReducer from './reducers/reducers';
 import createLogger from 'redux-logger';
@@ -25,7 +25,7 @@ const store = createStore(
 
 render (
 	<Provider store={store}>
-		<Root />
+		<App />
 	</Provider>,
 	document.getElementById('app')
 )

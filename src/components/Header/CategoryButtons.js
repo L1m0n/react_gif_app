@@ -1,13 +1,17 @@
 import React from 'react';
 
-const CategoryButtons = ({changeCategory}) => {
+const CategoryButtons = ({
+	changeCategory,
+	defaultStickers,
+	offset=0
+}) => {
 	return (
 	<div className="category-buttons">
 			<label htmlFor="gifs">
 				gifs
 				<input 
 					type="radio" 
-					name="categry" 
+					name="category" 
 					value="gifs" 
 					id="gifs"
 					onChange={ (e) => {
@@ -19,25 +23,14 @@ const CategoryButtons = ({changeCategory}) => {
 				stickers
 				<input 
 					type="radio" 
-					name="categry" 
+					name="category" 
 					value="stickers" 
-					id="stikers"
+					id="stickers"
 					onChange={ (e) => {
 						changeCategory(e.target.value)
+						defaultStickers(0)
 					}}
 				/>
-			</label>
-			<label htmlFor="trends">
-				trends
-				<input 
-					type="radio" 
-					name="categry" 
-					value="trends" 
-					id="trends"
-					onChange={ (e) => {
-						changeCategory(e.target.value)
-					}} 
-				/>	
 			</label>
 		</div>
 	)

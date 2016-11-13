@@ -14,11 +14,37 @@ export function fetchData(fetchOffset, category, query){
           }
         })
         let json = {
-          items: data,
-          query:query,
           total: res.pagination.total_count,
           offset: res.pagination.offset,
-          count: res.pagination.count
+          count: res.pagination.count,
+          showDefault:false,
+          query:query,
+          items: data
+        }
+        dispatch(reciveData(json))
+      })
+  }
+}
+
+export function getDefaultSickers(offset){
+  return function(dispatch) {
+    getJSON(`http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC&offset=${offset}`)
+      .then(res=>{
+
+        let data = res.data.map(item => {
+          return {
+            thumbnail:item.images.fixed_width_still.url,
+            gif: item.images.fixed_width.url,
+            id: item.id,
+            loaded: false
+          }
+        })
+        let json = {
+          total: res.pagination.total_count,
+          offset: res.pagination.offset,
+          count: res.pagination.count,
+          showDefault:true,
+          items: data
         }
         dispatch(reciveData(json))
       })
@@ -46,17 +72,4 @@ export function selectCategory(category) {
   }
 }
 
-/*export function nextPage(pageOffset) {
-  return {
-    type:"MOVE_NEXT",
-    pageOffset
-  }
-}
-
-export function prevPage(pageOffset) {
-  return {
-    type:"MOVE_PREV",
-    pageOffset
-  }
-}*/
 
