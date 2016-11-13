@@ -1,5 +1,5 @@
 import React from 'react';
-require('./Image.scss');
+
 
 const Image = ({ src, gif, loaded, id, onLoaded }) => (
 	<div className={loaded? "image-container" : "image-container show-spiner"}>

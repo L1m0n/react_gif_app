@@ -13,7 +13,7 @@ const NavigationButtons = ({
 }) => (
 	<div className="navigation">
 		<button
-			className="navigation__prev" 
+			className="navigation__button navigation__button--prev" 
 			disabled={ offset===0 } 
 			onClick={
 				showDefault?
@@ -23,7 +23,7 @@ const NavigationButtons = ({
 			PREV
 		</button>
 		<button
-			className="navigation__next" 
+			className="navigation__button navigation__button--next" 
 			onClick={
 				showDefault?
 				()=>nextDefault(offset+count) :

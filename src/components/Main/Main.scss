@@ -1,3 +1,13 @@
+.main {
+  text-align: center;
+  padding-top: 55px;
+  &__col {
+    display: inline-block;
+    width: 210px;
+    padding: 5px;
+    vertical-align: top;
+  }
+}
 .image-container,
 .image__thumbnail,
 .image__gif {
@@ -15,6 +25,7 @@
 
 .image__thumbnail {
 	z-index: 3;
+  background: #242030;
 }
 .image__gif {
 	z-index: 2;

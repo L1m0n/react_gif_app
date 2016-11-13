@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from './Image';
 
-require('./Image.scss');
+require('./Main.scss');
 
 const Main = ({ images, onGifLoadAction}) => {
 
@@ -23,7 +23,7 @@ const Main = ({ images, onGifLoadAction}) => {
 				)
 				counter++
 			}
-			outerData.push(<div key={i} className="col">{col}</div>)
+			outerData.push(<div key={i} className="main__col">{col}</div>)
 		}
 		return outerData
 	}

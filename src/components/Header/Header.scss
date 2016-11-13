@@ -1,5 +1,6 @@
 #app {
 	background: #242030;
+	min-height: 100vh;
 }
 .header-wrapper {
 	text-align: center;
@@ -142,3 +143,40 @@
 .search-form__input::-moz-placeholder          {color:rgba(255, 255, 255, 0.7);}
 .search-form__input:-moz-placeholder           {color:rgba(255, 255, 255, 0.7);}
 .search-form__input:-ms-input-placeholder 	{color:rgba(255, 255, 255, 0.7);}
+
+.navigation {
+	padding-top: 52px;
+	&__button {
+		cursor: pointer;
+		height: 65px;
+		border: none;
+		width: 116px;
+		margin: 0px -5px;
+		font-family: Lato;
+		color: rgba(255, 255, 255, 0.7);
+		text-transform: lowercase;
+		padding-bottom: 10px;
+		font-size: 20px;
+		font-weight: 400;
+		transition: color 0.1s linear, opacity 0.1s linear;
+		&:focus {
+			outline: none;
+		}
+		&--prev {
+			background: url('./btn_prev.svg') no-repeat 0 50%;
+			padding-left: 17px;
+			&:disabled {
+				opacity: 0.7;
+				color: #363245;
+			}
+		}
+		&--next {
+			background: url('./btn_next.svg') no-repeat 0 50%;
+			padding-right: 17px;
+			&:disabled {
+				opacity: 0.7;
+				color: #363245;
+			}
+		}
+	}
+}

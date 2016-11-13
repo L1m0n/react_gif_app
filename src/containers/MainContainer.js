@@ -1,6 +1,6 @@
 import {changeLoadedStatus} from '../actions/actions'
 import {connect} from 'react-redux';
-import ImagesList from '../components/Main/ImagesList'
+import Main from '../components/Main/index'
 
 
 const mapStateToProps = (state) => {
@@ -17,9 +17,9 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-const ImagesContainer = connect(
+const MainContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(ImagesList)
+)(Main)
 
-export default ImagesContainer;
+export default MainContainer;

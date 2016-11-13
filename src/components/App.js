@@ -1,11 +1,11 @@
 import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
-import ImagesContainer from '../containers/ImagesContainer';
+import MainContainer from '../containers/MainContainer';
 
 const Root = () => (
 	<div>
 		<HeaderContainer />
-		<ImagesContainer />
+		<MainContainer />
 	</div>
 )
 
