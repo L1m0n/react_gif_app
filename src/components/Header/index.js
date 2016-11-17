@@ -5,7 +5,7 @@ import CategoryButtons from './CategoryButtons';
 require('./Header.scss');
 
 const Header = ({
-	getDefaultStickers,
+	getDefault,
 	selectedCategory, 
 	changeCategory,
 	showDefault,
@@ -25,7 +25,7 @@ const Header = ({
 					<img src="logo.svg" alt="Logo"/>
 				</div>	
 				<CategoryButtons
-					defaultStickers={getDefaultStickers}
+					getDefault={getDefault}
 					changeCategory={changeCategory}
 					offset={offset} 
 				/>

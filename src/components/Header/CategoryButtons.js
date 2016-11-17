@@ -3,7 +3,7 @@ import React from 'react';
 
 const CategoryButtons = ({
 	changeCategory,
-	defaultStickers,
+	getDefault,
 	offset=0
 }) => {
 	return (
@@ -16,6 +16,7 @@ const CategoryButtons = ({
 				id="gifs"
 				onChange={ (e) => {
 					changeCategory(e.target.value)
+					getDefault(0, e.target.value)
 				}}
 			/>
 			<label 
@@ -35,7 +36,7 @@ const CategoryButtons = ({
 				id="stickers"
 				onChange={ (e) => {
 					changeCategory(e.target.value)
-					defaultStickers(0)
+					getDefault(0, e.target.value)
 				}}
 			/>
 			<label 

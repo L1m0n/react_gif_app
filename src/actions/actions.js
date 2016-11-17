@@ -26,9 +26,9 @@ export function fetchData(fetchOffset, category, query){
   }
 }
 
-export function getDefaultSickers(offset){
+export function getDefault(offset, categori){
   return function(dispatch) {
-    getJSON(`http://api.giphy.com/v1/stickers/trending?api_key=dc6zaTOxFJmzC&offset=${offset}`)
+    getJSON(`http://api.giphy.com/v1/${categori}/trending?api_key=dc6zaTOxFJmzC&offset=${offset}`)
       .then(res=>{
 
         let data = res.data.map(item => {

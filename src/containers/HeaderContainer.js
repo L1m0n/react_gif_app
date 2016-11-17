@@ -1,4 +1,4 @@
-import {fetchData, selectCategory, getDefaultSickers} from '../actions/actions';
+import {fetchData, selectCategory, getDefault} from '../actions/actions';
 import {connect} from 'react-redux';
 import Header from '../components/Header/index';
 
@@ -26,14 +26,14 @@ const mapDispatchToProps = (dispatch) => {
 		changeCategory: (category) => {
 			dispatch(selectCategory(category))
 		},
-		getDefaultStickers: (offset) => {
-			dispatch(getDefaultSickers(offset))
+		getDefault: (offset, categori) => {
+			dispatch(getDefault(offset, categori))
 		},
-		prevDefault:(offset) => {
-			dispatch(getDefaultSickers(offset))	
+		prevDefault:(offset, categori) => {
+			dispatch(getDefault(offset, categori))	
 		},
-		nextDefault:(offset) => {
-			dispatch(getDefaultSickers(offset))
+		nextDefault:(offset, categori) => {
+			dispatch(getDefault(offset, categori))
 		} 
 	}
 }

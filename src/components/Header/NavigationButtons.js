@@ -17,7 +17,7 @@ const NavigationButtons = ({
 			disabled={ offset===0 } 
 			onClick={
 				showDefault?
-				()=>prevDefault(offset-count) :
+				()=>prevDefault(offset-count, category) :
 				()=>prev(offset-count, category, query) 
 			}>
 			PREV
@@ -26,7 +26,7 @@ const NavigationButtons = ({
 			className="navigation__button navigation__button--next" 
 			onClick={
 				showDefault?
-				()=>nextDefault(offset+count) :
+				()=>nextDefault(offset+count, category) :
 				()=>next(offset+count, category, query) 
 			}>
 			NEXT
