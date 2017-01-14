@@ -2,8 +2,8 @@
 
 # dependencies
 /node_modules/*
-!/node_modules/react-scripts/config/webpack.config.dev
-!/node_modules/react-scripts/config/webpack.config.prod
+!/node_modules/react-scripts/config/
+!/node_modules/react-scripts/config/
 # testing
 coverage
 
