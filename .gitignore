@@ -12,3 +12,6 @@ build
 .DS_Store
 .env
 npm-debug.log
+
+!node_modules/react-scripts/config/webpack.config.dev
+!node_modules/react-scripts/config/webpack.config.prod
