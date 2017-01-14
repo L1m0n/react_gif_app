@@ -51,30 +51,4 @@ class SearchForm extends Component {
 	}
 }
 
-/*
-const SearchForm = ({ onSubmit, category }) => {
-	let input
-	return (
-		<div className="search-form">
-			<form onSubmit={(evt) => {
-				evt.preventDefault()
-				onSubmit(0, category, input.value, )
-				input.value = ""
-			}}>
-				<input 
-					placeholder="Type something..." 
-					ref={node => input = node}
-					type="text" 
-				/>
-				<button 
-					type="submit"
-					disabled={btnDisabled} 
-				>
-					find
-				</button>
-			</form>
-		</div>
-	)
-}
-*/
 export default SearchForm
