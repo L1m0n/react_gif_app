@@ -1,7 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-node_modules
+/node_modules/*
+!/node_modules/react-scripts/config/webpack.config.dev
+!/node_modules/react-scripts/config/webpack.config.prod
 # testing
 coverage
 
@@ -13,5 +15,3 @@ build
 .env
 npm-debug.log
 
-!node_modules/react-scripts/config/webpack.config.dev
-!node_modules/react-scripts/config/webpack.config.prod
