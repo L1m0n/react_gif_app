@@ -10,11 +10,14 @@
 	box-shadow: 0 2px 4px rgba(19, 18, 26, 0.41);
 	border-bottom-right-radius: 5px; 
 	border-bottom-left-radius: 5px;
-	padding-top: 62px;
-	padding-bottom: 90px;
+	padding-top: 30px;
+	padding-bottom: 30px;
 }
 .logo {
 	text-align: center;
+}
+.logo img {
+	width: 130px;
 }
 .label__svg {
 	transition: stroke-dashoffset 1s linear;
@@ -28,7 +31,7 @@
 }
 .categories {
 	position: relative;
-	margin-top: 56px;
+	margin-top: 20px;
 	&__label {
 		transition: color 0.2s linear, border 0.2s linear;
 		border: 3px solid #625d78;
@@ -90,7 +93,7 @@
 .search-form {
 	box-shadow: 0 2px 24px rgba(0, 0, 0, 0.38);
 	background-color: #1f1b2b;
-	margin: 40px auto 0;
+	margin: 25px auto 0;
 	width: 622px;
 	height: 65px;
 	form {
@@ -145,7 +148,7 @@
 .search-form__input:-ms-input-placeholder 	{color:rgba(255, 255, 255, 0.7);}
 
 .navigation {
-	padding-top: 52px;
+	padding-top: 20px;
 	&__button {
 		cursor: pointer;
 		height: 65px;

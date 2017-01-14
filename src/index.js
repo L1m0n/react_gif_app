@@ -1,18 +1,20 @@
-import React from 'react';
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import App from './components/App';
+import {Router, Route, browserHistory} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
 import mainReducer from './reducers/reducers';
-import createLogger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
+import createLogger from 'redux-logger';
+import {Provider} from 'react-redux';
+import Test from './components/Test';
+import App from './components/App';
+import {render} from 'react-dom';
+import React from 'react';
 
 const loggerMiddleware = createLogger();
 
 const initialState = {
 	selectedCategory:'gifs',
 	data: {}
-}
+};
 
 const store = createStore(
 	mainReducer,
@@ -21,11 +23,15 @@ const store = createStore(
 		loggerMiddleware,
 		thunkMiddleware
 	)
-)
+);
 
-render (
+render(
 	<Provider store={store}>
-		<App />
+		<Router history={browserHistory}>
+			<Route path='/' component={App} />
+			<Route path='test' component={Test} />
+		</Router>
 	</Provider>,
-	document.getElementById('app')
-)
+    document.getElementById('app')
+);
+

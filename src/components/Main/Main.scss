@@ -1,6 +1,9 @@
+body::-webkit-scrollbar {
+  display: none;
+}
 .main {
   text-align: center;
-  padding-top: 55px;
+  padding-top: 15px;
   &__col {
     display: inline-block;
     width: 210px;
@@ -18,17 +21,19 @@
 	overflow: hidden;
 	margin-bottom: 10px;
 	cursor: pointer;
+  display: block;
 }
 .show-spiner {
   background: #000;
 }
 
 .image__thumbnail {
-	z-index: 3;
+  z-index: 2;
   background: #242030;
+  opacity: 0;
 }
 .image__gif {
-	z-index: 2;
+	z-index: 3;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -44,6 +49,9 @@
 }
 .show-spiner .image__gif {
   display: none;
+}
+.show-spiner .image__thumbnail {
+  opacity: 1;
 }
 .image__eye {
   background: url('../../assets/images/eye.svg') no-repeat 50% 50%;
@@ -64,9 +72,9 @@
 }
 
 .image-container:not(.show-spiner):hover {
-  .image__thumbnail {
+  /*.image__thumbnail {
     opacity: 0;
-  }
+  }*/
   .image__eye {
     display: block;
   }

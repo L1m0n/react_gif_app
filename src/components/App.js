@@ -7,6 +7,6 @@ const Root = () => (
 		<HeaderContainer />
 		<MainContainer />
 	</div>
-)
+);
 
 export default Root;

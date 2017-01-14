@@ -36,11 +36,11 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(getDefault(offset, categori))
 		} 
 	}
-}
+};
 
 const ControlsContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(Header)
+)(Header);
 
 export default ControlsContainer
