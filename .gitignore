@@ -2,7 +2,7 @@
 
 # dependencies
 !/node_modules/react-scripts/config/
-
+/node_modules/*
 # testing
 
 # production
