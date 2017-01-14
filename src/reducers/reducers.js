@@ -1,7 +1,8 @@
+import * as actionTypes from '../constants/actionTypes';
 
 const items = (state = [], action) => {
   switch (action.type) {
-    case "CHANGE_STATUS":
+    case actionTypes.CHANGE_STATUS:
       return  state.map((item)=>{
         if (item.id !== action.id) {
           return item
@@ -37,20 +38,20 @@ const updateData = (state, data) => {
 
 const  mainReducer = (state = {}, action) => {
   switch (action.type) {
-    case "SELECT_CATEGORY":
+    case actionTypes.SELECT_CATEGORY:
       return Object.assign({}, state, {
         selectedCategory: action.category
       });
-    case "RECIVE_DATA":
+    case actionTypes.RECIVE_DATA:
       return Object.assign({}, state, {
         data:action.json
       });
-      case "UPDATE_DATA":
+      case actionTypes.UPDATE_DATA:
       return Object.assign({}, state, {
           ...state,
           data:updateData(state.data, action.json)
       });
-    case "CHANGE_STATUS":
+    case actionTypes.CHANGE_STATUS:
       return Object.assign({}, state, {
         data:{
           ...state.data,

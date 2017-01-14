@@ -1,4 +1,4 @@
-import {fetchData, selectCategory, getDefault} from '../actions/actions';
+import * as actions from '../actions';
 import {connect} from 'react-redux';
 import Header from '../components/Header/index';
 
@@ -10,30 +10,31 @@ const mapStateToProps = (state) => {
 		query: state.data.query,
 		showDefault: state.data.showDefault
 	}
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		submitForm: (offset, category, query) => {
-			dispatch(fetchData(offset, category, query))
+			dispatch(actions.fetchData(offset, category, query))
 		},
 		prev: (offset, category, query) => {
-			dispatch(fetchData(offset, category, query))
+			dispatch(actions.fetchData(offset, category, query))
 		},
 		next: (offset, category, query) => {
-			dispatch(fetchData(offset, category, query))
+			dispatch(actions.fetchData(offset, category, query))
 		},
 		changeCategory: (category) => {
-			dispatch(selectCategory(category))
+			console.log(actions);
+			dispatch(actions.selectCategory(category))
 		},
 		getDefault: (offset, categori) => {
-			dispatch(getDefault(offset, categori))
+			dispatch(actions.getDefault(offset, categori))
 		},
 		prevDefault:(offset, categori) => {
-			dispatch(getDefault(offset, categori))	
+			dispatch(actions.getDefault(offset, categori))
 		},
 		nextDefault:(offset, categori) => {
-			dispatch(getDefault(offset, categori))
+			dispatch(actions.getDefault(offset, categori))
 		} 
 	}
 };

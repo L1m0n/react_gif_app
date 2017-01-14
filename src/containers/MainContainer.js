@@ -1,4 +1,4 @@
-import {changeLoadedStatus, loadMore} from '../actions/actions'
+import * as actions from '../actions';
 import {connect} from 'react-redux';
 import Main from '../components/Main/index'
 
@@ -14,10 +14,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onGifLoadAction: (id) => {
-			dispatch(changeLoadedStatus(id))
+			dispatch(actions.changeLoadedStatus(id))
 		},
 		loadMore: (category, offset)=>{
-			dispatch(loadMore(category, offset));
+			dispatch(actions.loadMore(category, offset));
 		}
 	}
 };

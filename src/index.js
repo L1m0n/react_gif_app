@@ -4,7 +4,6 @@ import mainReducer from './reducers/reducers';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux';
-import Test from './components/Test';
 import App from './components/App';
 import {render} from 'react-dom';
 import React from 'react';
@@ -29,7 +28,6 @@ render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
 			<Route path='/' component={App} />
-			<Route path='test' component={Test} />
 		</Router>
 	</Provider>,
     document.getElementById('app')
