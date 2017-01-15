@@ -4,7 +4,7 @@ import mainReducer from './reducers/reducers';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux';
-import App from './components/App';
+import Homepage from './components/Homepage';
 import {render} from 'react-dom';
 import React from 'react';
 
@@ -27,7 +27,7 @@ const store = createStore(
 render(
 	<Provider store={store}>
 		<Router history={browserHistory}>
-			<Route path='/' component={App} />
+			<Route path='/' component={Homepage} />
 		</Router>
 	</Provider>,
     document.getElementById('app')
