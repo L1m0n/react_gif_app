@@ -1,6 +1,6 @@
 import {Router, Route, browserHistory} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
-import mainReducer from './reducers/reducers';
+import reducer from './reducers';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import {Provider} from 'react-redux';
@@ -16,7 +16,7 @@ const initialState = {
 };
 
 const store = createStore(
-	mainReducer,
+	reducer,
 	initialState,
 	applyMiddleware(
 		loggerMiddleware,
