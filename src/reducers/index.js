@@ -1,6 +1,9 @@
 import * as actionTypes from '../constants/actionTypes';
+import { routerReducer } from 'react-router-redux';
+import {combineReducers } from 'redux';
 import updateData from './updateData';
 import items from './items';
+
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -29,4 +32,7 @@ const  reducer = (state = {}, action) => {
     }
 };
 
-export default reducer;
+export default combineReducers({
+    app:reducer,
+    routing: routerReducer
+});

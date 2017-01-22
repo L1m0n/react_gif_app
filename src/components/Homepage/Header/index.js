@@ -4,11 +4,11 @@ import presenter from './presenter';
 
 const mapStateToProps = (state) => {
     return {
-        selectedCategory: state.selectedCategory,
-        offset: state.data.offset,
-        count: state.data.count,
-        query: state.data.query,
-        showDefault: state.data.showDefault
+        selectedCategory: state.app.selectedCategory,
+        offset: state.app.data.offset,
+        count: state.app.data.count,
+        query: state.app.data.query,
+        showDefault: state.app.data.showDefault
     }
 };
 

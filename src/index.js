@@ -1,33 +1,31 @@
-import {Router, Route, browserHistory} from 'react-router';
-import {createStore, applyMiddleware} from 'redux';
-import reducer from './reducers';
-import thunkMiddleware from 'redux-thunk';
-import createLogger from 'redux-logger';
-import {Provider} from 'react-redux';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router';
+import {syncHistoryWithStore} from 'react-router-redux';
+import configureStore from './config/configureStore'
 import Homepage from './components/Homepage';
+import {Provider} from 'react-redux';
+import Test from './components/Test';
 import {render} from 'react-dom';
 import React from 'react';
-
-const loggerMiddleware = createLogger();
+import App from './components/App';
 
 const initialState = {
-	selectedCategory:'gifs',
-	data: {}
+	app: {
+        selectedCategory:'gifs',
+        data: {}
+	}
 };
 
-const store = createStore(
-	reducer,
-	initialState,
-	applyMiddleware(
-		loggerMiddleware,
-		thunkMiddleware
-	)
-);
+const store = configureStore(initialState);
+const history = syncHistoryWithStore(browserHistory, store);
 
 render(
 	<Provider store={store}>
-		<Router history={browserHistory}>
-			<Route path='/' component={Homepage} />
+		<Router history={history}>
+			<Route path='/' component={App} >
+				<IndexRoute component={Homepage} />
+				<Route path='/' component={Homepage} />
+				<Route path='/test' component={Test} />
+			</Route>
 		</Router>
 	</Provider>,
     document.getElementById('app')
