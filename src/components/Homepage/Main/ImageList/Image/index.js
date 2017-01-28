@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 
 
 class Image extends Component {
@@ -26,18 +27,20 @@ class Image extends Component {
 
     render(){
         return (
-            <a href="/test" className={this.state.gifLoaded? "image-container" : "image-container show-spiner"}>
-                <img className="image__thumbnail" onLoad={() => this.srcInsert()} src={this.props.src} role="presentation"/>
-                <img className="image__gif"  src={this.state.thumbnailLoaded ? this.props.gif : ""} onLoad={()=> this.changeStatus()} role="presentation"/>
-                <div className="spinner__wrapper">
-                    <div className="spinner">
-                        <div className="bounce1"></div>
-                        <div className="bounce2"></div>
-                        <div className="bounce3"></div>
+            <Link to="/gifpage">
+                <div className={this.state.gifLoaded? "image-container" : "image-container show-spiner"}>
+                    <img className="image__thumbnail" onLoad={() => this.srcInsert()} src={this.props.src} role="presentation"/>
+                    <img className="image__gif"  src={this.state.thumbnailLoaded ? this.props.gif : ""} onLoad={()=> this.changeStatus()} role="presentation"/>
+                    <div className="spinner__wrapper">
+                        <div className="spinner">
+                            <div className="bounce1"></div>
+                            <div className="bounce2"></div>
+                            <div className="bounce3"></div>
+                        </div>
                     </div>
+                    <div className="image__eye"></div>
                 </div>
-                <div className="image__eye"></div>
-            </a>
+            </Link>
         )
     }
 

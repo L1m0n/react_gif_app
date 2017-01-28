@@ -3,7 +3,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import configureStore from './config/configureStore'
 import Homepage from './components/Homepage';
 import {Provider} from 'react-redux';
-import Test from './components/Test';
+import Gifpage from './components/Gifpage';
 import {render} from 'react-dom';
 import React from 'react';
 import App from './components/App';
@@ -24,7 +24,7 @@ render(
 			<Route path='/' component={App} >
 				<IndexRoute component={Homepage} />
 				<Route path='/' component={Homepage} />
-				<Route path='/test' component={Test} />
+				<Route path='/gifpage' component={Gifpage} />
 			</Route>
 		</Router>
 	</Provider>,
