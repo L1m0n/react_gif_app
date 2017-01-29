@@ -11,7 +11,8 @@ import App from './components/App';
 const initialState = {
 	app: {
         selectedCategory:'gifs',
-        data: {}
+        data: {},
+		gif :{}
 	}
 };
 

@@ -18,6 +18,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadMore: (category, offset)=>{
             dispatch(actions.loadMore(category, offset));
+        },
+        showSingleGif: (id) => {
+            dispatch(actions.showGif(id));
         }
     }
 };

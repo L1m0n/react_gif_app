@@ -3,6 +3,7 @@ import { routerReducer } from 'react-router-redux';
 import {combineReducers } from 'redux';
 import updateData from './updateData';
 import items from './items';
+import gif from './gif';
 
 
 const  reducer = (state = {}, action) => {
@@ -26,6 +27,10 @@ const  reducer = (state = {}, action) => {
                     ...state.data,
                     items: items(state.data.items, action)
                 }
+            });
+        case actionTypes.SHOW_GIF:
+            return Object.assign({}, state, {
+                gif: gif(state, action)
             });
         default:
             return state

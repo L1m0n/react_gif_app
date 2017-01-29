@@ -103,6 +103,7 @@ class presenter extends Component {
                     loaded={data[i].loaded}
                     id={data[i].id}
                     height={data[i].height}
+                    showGif={this.props.showSingleGif}
                 />
             )
 

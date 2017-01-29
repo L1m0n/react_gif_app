@@ -27,7 +27,7 @@ class Image extends Component {
 
     render(){
         return (
-            <Link to="/gifpage">
+            <Link to="/gifpage" onClick={()=>{this.props.showGif(this.props.id)}}>
                 <div className={this.state.gifLoaded? "image-container" : "image-container show-spiner"}>
                     <img className="image__thumbnail" onLoad={() => this.srcInsert()} src={this.props.src} role="presentation"/>
                     <img className="image__gif"  src={this.state.thumbnailLoaded ? this.props.gif : ""} onLoad={()=> this.changeStatus()} role="presentation"/>

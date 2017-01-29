@@ -1,5 +1,5 @@
 import React from 'react';
-import Gif from './Gif/presenter';
+import Gif from './Gif';
 require('./assets/styles.scss');
 
 const Gifpage = () => {

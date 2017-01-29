@@ -8,11 +8,13 @@ const getDefault = (offset, categori) => {
 
                 let data = res.data.map(item => {
                     return {
+                        height:parseInt(item.images.fixed_width.height, 10),
                         thumbnail:item.images.fixed_width_still.url,
                         gif: item.images.fixed_width.url,
-                        id: item.id,
+                        url:item.images.original.url,
+                        fbUrl:item.url,
                         loaded: false,
-                        height:parseInt(item.images.fixed_width.height, 10)
+                        id: item.id
                     }
                 });
                 let json = {

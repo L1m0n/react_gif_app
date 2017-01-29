@@ -5,6 +5,7 @@ import updateData from './updateData';
 import getDefault from './getDefault';
 import fetchData from './fetchData';
 import loadMore from  './loadMore';
+import showGif from './showGif';
 
 export {
     changeLoadedStatus,
@@ -13,5 +14,6 @@ export {
     updateData,
     getDefault,
     fetchData,
-    loadMore
+    loadMore,
+    showGif
 }

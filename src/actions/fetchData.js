@@ -8,11 +8,13 @@ const fetchData = (fetchOffset, category, query) => {
                 console.log(res);
                 let data = res.data.map(item => {
                     return {
+                        height:parseInt(item.images.fixed_width.height, 10),
                         thumbnail:item.images.fixed_width_still.url,
                         gif: item.images.fixed_width.url,
-                        id: item.id,
-                        height:parseInt(item.images.fixed_width.height, 10),
-                        loaded: false
+                        url:item.images.original.url,
+                        fbUrl:item.url,
+                        loaded: false,
+                        id: item.id
                     }
                 });
                 let json = {
