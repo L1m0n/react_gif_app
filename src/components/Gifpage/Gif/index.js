@@ -1,10 +1,10 @@
-//import * as actions from '../../../actions';
 import presenter from './presenter';
 import {connect} from 'react-redux';
 
 const mapStateToProps = (state) => {
     return {
-        url: state.app.gif.url
+        url: state.app.gif.url,
+        fbUrl: state.app.gif.fbUrl
     }
 };
 
