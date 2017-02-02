@@ -1,10 +1,47 @@
 .signle-gif {
   position: absolute;
+  background: #242030;
   left: 50%;
   top: 50%;
+  z-index: 1;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  text-align: center;
+  img {
+    max-height:400px;
+  }
+}
+.share-panel {
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: hidden;
+  &__input {
+    position: absolute;
+    display: block;
+    top: -999px;
+
+  }
+  &__button {
+    font-family: 'Montserrat', sans-serif;
+    border: 3px solid #ff2970;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+    text-align: center;
+    padding: 5px 20px;
+    cursor: pointer;
+    color: #fff;
+    &--copy {
+      
+    }
+    &--download {
+      
+    }
+    &--fb {
+      margin-right: 0;
+    }
+  }
 }
