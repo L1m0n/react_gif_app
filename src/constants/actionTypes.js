@@ -1,3 +1,4 @@
+export const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION';
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const CHANGE_STATUS = 'CHANGE_STATUS';
 export const  UPDATE_DATA = 'UPDATE_DATA';

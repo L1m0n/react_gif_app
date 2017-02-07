@@ -1,4 +1,4 @@
-import * as actions from '../../../../actions';
+import * as actions from '../../../actions';
 import presenter from './presenter';
 import {connect} from 'react-redux';
 

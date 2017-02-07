@@ -1,4 +1,5 @@
 import changeLoadedStatus from './changeLoadedStatus';
+import addToCollection from './addToCollection';
 import selectCategory from './selectCategory';
 import reciveData from './reciveData';
 import updateData from './updateData';
@@ -9,6 +10,7 @@ import showGif from './showGif';
 
 export {
     changeLoadedStatus,
+    addToCollection,
     selectCategory,
     reciveData,
     updateData,

@@ -1,10 +1,10 @@
 import * as actionTypes from '../constants/actionTypes';
 import { routerReducer } from 'react-router-redux';
 import {combineReducers } from 'redux';
+import collection from './collection';
 import updateData from './updateData';
 import items from './items';
 import gif from './gif';
-
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -38,6 +38,7 @@ const  reducer = (state = {}, action) => {
 };
 
 export default combineReducers({
+    collection,
     app:reducer,
     routing: routerReducer
 });

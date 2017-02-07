@@ -1,12 +1,12 @@
-import React from 'react';
-import Main from './Main';
+import ImageList from './ImageList'
 import Header from  './Header';
+import React from 'react';
 
 const Homepage = () => {
     return(
         <div>
             <Header/>
-            <Main/>
+            <ImageList/>
         </div>
     )
 };

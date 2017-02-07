@@ -1,16 +1,18 @@
 import presenter from './presenter';
 import {connect} from 'react-redux';
+import * as actions from '../../../actions';
 
 const mapStateToProps = (state) => {
     return {
-        url: state.app.gif.url,
-        fbUrl: state.app.gif.fbUrl
+        gif: state.app.gif
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-
+        add: (item) => {
+            dispatch(actions.addToCollection(item));
+        }
   }
 };
 

@@ -4,12 +4,14 @@ import React from 'react';
 const CategoryButtons = ({
     changeCategory,
     getDefault,
+    selected,
     offset=0
 }) => {
     return (
         <div className="categories">
             <input
                 className="categories__input categories__input--gifs"
+                checked={selected === 'gifs' ? 'checked' : ''}
                 name="category"
                 type="radio"
                 value="gifs"
@@ -30,6 +32,7 @@ const CategoryButtons = ({
 			</span>
             <input
                 className="categories__input categories__input--stickers"
+                checked={selected === 'stickers' ? 'checked' : ''}
                 type="radio"
                 name="category"
                 value="stickers"
