@@ -16,8 +16,14 @@ const initialState = {
 	}
 };
 
-const store = configureStore(initialState);
+const persistedState = localStorage.getItem('app') ? JSON.parse(localStorage.getItem('app')) : initialState;
+
+const store = configureStore(persistedState);
 const history = syncHistoryWithStore(browserHistory, store);
+
+store.subscribe(()=>{
+    localStorage.setItem('app', JSON.stringify(store.getState()))
+})
 
 render(
 	<Provider store={store}>

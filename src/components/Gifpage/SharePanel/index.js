@@ -15,7 +15,6 @@ const SharePanel = (props) => {
 
     return (
         <div className="share-panel">
-
             <span
                 onClick={(e)=>{copy(e)}}
                 className="share-panel__button share-panel__button--copy"
@@ -36,6 +35,11 @@ const SharePanel = (props) => {
                 className="share-panel__button share-panel__button--fb"
             >
                 Share on facebook
+            </span>
+            <span
+                className="share-panel__button share-panel__button--add"
+            >
+                Add to collection
             </span>
         </div>
     )
