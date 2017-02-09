@@ -11,7 +11,6 @@ const items = (state = [], action) => {
                 return Object.assign({}, item, {
                     loaded:true
                 })
-
             });
         default :
             return state

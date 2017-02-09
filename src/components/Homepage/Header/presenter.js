@@ -28,6 +28,7 @@ const presenter = ({
                     getDefault={getDefault}
                     changeCategory={changeCategory}
                     offset={offset}
+                    selected={selectedCategory}
                 />
                 <SearchForm
                     category={selectedCategory}
