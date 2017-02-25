@@ -1,4 +1,4 @@
-import AddToColection from '../AddToCollection';
+import AddToColection from './AddToCollection';
 import SharePanel from '../SharePanel';
 import React from 'react';
 

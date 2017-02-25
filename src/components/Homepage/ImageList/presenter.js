@@ -63,6 +63,9 @@ class presenter extends Component {
 
      };*/
 
+    show = (data) => {
+        console.log(data);
+    }
 
     renderPictures(data){
         let columnsVar = [
@@ -73,39 +76,40 @@ class presenter extends Component {
                 {id:4, height:0}
             ],
             columnsLenght = columnsVar.length,
-            dataLength = data.length,
             main = [],
             i,
             tempContainer = [
                 [], [], [], [], []
             ];
 
-        for (i = 0; i < dataLength; i++) {
-            let y,
-                colIndex = 0,
-                previousColHeight = columnsVar[0].height;
+        for (i in data) {
+            if (data.hasOwnProperty(i)) {
+                let y,
+                    colIndex = 0,
+                    previousColHeight = columnsVar[0].height;
 
-            for (y = 0; y < columnsLenght; y++) {
-                if (previousColHeight > columnsVar[y].height){
-                    previousColHeight = columnsVar[y].height;
-                    colIndex = columnsVar[y].id;
+                for (y = 0; y < columnsLenght; y++) {
+                    if (previousColHeight > columnsVar[y].height){
+                        previousColHeight = columnsVar[y].height;
+                        colIndex = columnsVar[y].id;
 
+                    }
                 }
+
+                columnsVar[colIndex].height += data[i].height;
+
+                tempContainer[colIndex].push(
+                    <Image
+                        src={data[i].thumbnail}
+                        gif={data[i].gif}
+                        key={data[i].id}
+                        loaded={data[i].loaded}
+                        id={data[i].id}
+                        height={data[i].height}
+                        showGif={this.props.showSingleGif}
+                    />
+                )
             }
-
-            columnsVar[colIndex].height += data[i].height;
-
-            tempContainer[colIndex].push(
-                <Image
-                    src={data[i].thumbnail}
-                    gif={data[i].gif}
-                    key={data[i].id}
-                    loaded={data[i].loaded}
-                    id={data[i].id}
-                    height={data[i].height}
-                    showGif={this.props.showSingleGif}
-                />
-            )
 
         }
 
