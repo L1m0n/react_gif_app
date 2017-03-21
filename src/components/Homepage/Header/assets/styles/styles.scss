@@ -8,8 +8,6 @@
 .header {
 	background-image: radial-gradient(circle at 100% 0, #4a465b, #49455a 1%, #49455a 2%, #433f54 21%, #322d45 72%, #2f2b42 79%, #2a253d 97%, #29243c);
 	box-shadow: 0 2px 4px rgba(19, 18, 26, 0.41);
-	border-bottom-right-radius: 5px; 
-	border-bottom-left-radius: 5px;
 	padding-top: 30px;
 	padding-bottom: 30px;
 }
@@ -162,6 +160,7 @@
 		font-weight: 400;
 		transition: color 0.1s linear, opacity 0.1s linear;
 		position: fixed;
+		z-index: 3;
 		top: 50%;
 		-webkit-transform: translate(0, -50%);
 		-moz-transform: translate(0, -50%);
