@@ -6,7 +6,8 @@ import {browserHistory} from 'react-router';
 const Gifpage = () => {
     let back = (e) => {
         if(e.target.classList.contains('gif-page') ) {
-            browserHistory.push('/');
+            //browserHistory.push('/');
+            browserHistory.goBack();
         }
     };
     return(
