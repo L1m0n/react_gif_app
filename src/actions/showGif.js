@@ -1,9 +1,9 @@
 import {SHOW_GIF} from '../constants/actionTypes';
 
-const showGif = (id) => {
+const showGif = (gif) => {
     return {
         type: SHOW_GIF,
-        id
+        gif: gif
     }
 };
 

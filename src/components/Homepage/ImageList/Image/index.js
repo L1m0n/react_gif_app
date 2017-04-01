@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router';
+
 
 
 class Image extends Component {
@@ -27,7 +27,7 @@ class Image extends Component {
 
     render(){
         return (
-            <Link to="/gifpage" onClick={()=>{this.props.showGif(this.props.id)}}>
+            <div onClick={()=>{this.props.showGif(this.props.item)}}>
                 <div className={this.state.gifLoaded? "image-container" : "image-container show-spiner"}>
                     <img className="image__thumbnail" onLoad={() => this.srcInsert()} src={this.props.src} role="presentation"/>
                     <img className="image__gif"  src={this.state.thumbnailLoaded ? this.props.gif : ""} onLoad={()=> this.changeStatus()} role="presentation"/>
@@ -40,7 +40,7 @@ class Image extends Component {
                     </div>
                     <div className="image__eye"></div>
                 </div>
-            </Link>
+            </div>
         )
     }
 

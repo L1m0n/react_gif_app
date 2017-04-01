@@ -1,6 +1,7 @@
 import * as actions from '../../../actions';
 import presenter from './presenter';
 import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
 
 const mapStateToProps = (state) => {
@@ -19,8 +20,9 @@ const mapDispatchToProps = (dispatch) => {
         loadMore: (category, offset)=>{
             dispatch(actions.loadMore(category, offset));
         },
-        showSingleGif: (id) => {
-            dispatch(actions.showGif(id));
+        showSingleGif: (gif) => {
+            dispatch(actions.showGif(gif));
+            browserHistory.push('/gifpage');
         }
     }
 };

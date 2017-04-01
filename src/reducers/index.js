@@ -4,7 +4,6 @@ import {combineReducers } from 'redux';
 import collection from './collection';
 import updateData from './updateData';
 import items from './items';
-import gif from './gif';
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -30,7 +29,7 @@ const  reducer = (state = {}, action) => {
             });
         case actionTypes.SHOW_GIF:
             return Object.assign({}, state, {
-                gif: gif(state, action)
+                gif: action.gif
             });
         default:
             return state
