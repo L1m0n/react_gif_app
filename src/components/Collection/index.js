@@ -1,4 +1,4 @@
-import presenter from '../Homepage/ImageList/presenter';
+import presenter from './ImageList/presenter';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
 import {browserHistory} from 'react-router';

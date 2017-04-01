@@ -4,7 +4,8 @@ import * as actions from '../../../actions';
 
 const mapStateToProps = (state) => {
     return {
-        gif: state.app.gif
+        gif: state.app.gif,
+        collection: state.collection
     }
 };
 
@@ -12,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
         add: (item) => {
             dispatch(actions.addToCollection(item));
+        },
+        remove: (id) => {
+            dispatch(actions.removeFromCollection(id));
         }
   }
 };
