@@ -33,8 +33,11 @@ class Menu extends Component {
                     <Link onClick={this.toggleMenu} className="menu__link" to="/collection">
                         Collection
                     </Link>
-                    <Link onClick={this.toggleMenu} className="menu__link" to="/contact-us">
-                        Contact Us
+                    <Link onClick={this.toggleMenu} className="menu__link" to="/registration">
+                        Sign up
+                    </Link>
+                    <Link onClick={this.toggleMenu} className="menu__link" to="/login">
+                        Login
                     </Link>
                 </div>
             </div>

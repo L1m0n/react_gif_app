@@ -8,6 +8,7 @@ import {Provider} from 'react-redux';
 import App from './components/App';
 import {render} from 'react-dom';
 import React from 'react';
+import SignUpForm from './components/Common/SignUpForm/presenter';
 
 const initialState = {
 	app: {
@@ -36,6 +37,8 @@ render(
 				<Route path='/' component={Homepage} />
 				<Route path='/collection' component={Collection} />
 				<Route path='/gifpage' component={Gifpage} />
+				<Route path='/registration' component={SignUpForm} />
+				<Route path='/login' component={Gifpage} />
 			</Route>
 		</Router>
 	</Provider>,

@@ -73,7 +73,9 @@ class presenter extends Component {
         return (
             <div>
                 <div className="main" ref="main">
-                    {this.props.images && this.renderPictures(this.props.images)}
+                    {Object.keys(this.props.images).length === 0 ?
+                        <h1>Your collection is empty :(</h1> :
+                        this.renderPictures(this.props.images)}
                 </div>
             </div>
         );
