@@ -9,7 +9,6 @@ class SignUpForm extends React.Component {
         this.state = {
             fields: {
                 passwordConfirmation: '',
-                isValid:true,
                 userName: '',
                 password: '',
                 email: ''
@@ -19,7 +18,6 @@ class SignUpForm extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.validateField = this.validateField.bind(this);
     }
 
     handleChange = (e) => {
@@ -41,10 +39,6 @@ class SignUpForm extends React.Component {
                 }
             })
         }
-
-    }
-
-    validateField = (field) => {
 
     }
 
@@ -95,6 +89,11 @@ class SignUpForm extends React.Component {
         }
 
         this.setState({errors, isValid: isValid});
+
+        if(isValid) {
+            this.props.signup(this.state.fields);
+        }
+
     }
 
     render() {
@@ -143,6 +142,7 @@ class SignUpForm extends React.Component {
                     <div className="form__field form__field--button">
                         <button className="form__button">Register</button>
                     </div>
+                    <span className="field__tooltip">{''}</span>
                 </form>
             </div>
 

@@ -8,6 +8,7 @@ import getDefault from './getDefault';
 import fetchData from './fetchData';
 import loadMore from  './loadMore';
 import showGif from './showGif';
+import signUp from './signUp';
 
 export {
     removeFromCollection,
@@ -19,5 +20,6 @@ export {
     getDefault,
     fetchData,
     loadMore,
-    showGif
+    showGif,
+    signUp
 }

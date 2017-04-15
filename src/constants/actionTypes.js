@@ -1,7 +1,8 @@
-export const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION';
 export const REMOVE_FROM_COLLECTION = 'REMOVE_FROM_COLLECTION';
+export const ADD_TO_COLLECTION = 'ADD_TO_COLLECTION';
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
 export const CHANGE_STATUS = 'CHANGE_STATUS';
 export const  UPDATE_DATA = 'UPDATE_DATA';
 export const RECIVE_DATA = 'RECIVE_DATA';
 export const SHOW_GIF = 'SHOW_GIF';
+export const SIGN_UP = 'SIGN_UP';

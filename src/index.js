@@ -8,7 +8,7 @@ import {Provider} from 'react-redux';
 import App from './components/App';
 import {render} from 'react-dom';
 import React from 'react';
-import SignUpForm from './components/Common/SignUpForm/presenter';
+import SignUpForm from './components/Common/SignUpForm';
 
 const initialState = {
 	app: {
