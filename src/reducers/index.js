@@ -2,8 +2,8 @@ import * as actionTypes from '../constants/actionTypes';
 import { routerReducer } from 'react-router-redux';
 import {combineReducers } from 'redux';
 import collection from './collection';
-import updateData from './updateData';
 import items from './items';
+import user from './user';
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -14,11 +14,6 @@ const  reducer = (state = {}, action) => {
         case actionTypes.RECIVE_DATA:
             return Object.assign({}, state, {
                 data:action.json
-            });
-        case actionTypes.UPDATE_DATA:
-            return Object.assign({}, state, {
-                ...state,
-                data:updateData(state.data, action.json)
             });
         case actionTypes.CHANGE_STATUS:
             return Object.assign({}, state, {
@@ -37,6 +32,7 @@ const  reducer = (state = {}, action) => {
 };
 
 export default combineReducers({
+    user,
     collection,
     app:reducer,
     routing: routerReducer

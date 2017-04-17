@@ -2,13 +2,14 @@ import removeFromCollection from './removeFromCollection';
 import changeLoadedStatus from './changeLoadedStatus';
 import addToCollection from './addToCollection';
 import selectCategory from './selectCategory';
+import setUser from './userActions/setUser';
+import signUp from './userActions/signUp';
 import reciveData from './reciveData';
 import updateData from './updateData';
 import getDefault from './getDefault';
 import fetchData from './fetchData';
 import loadMore from  './loadMore';
 import showGif from './showGif';
-import signUp from './signUp';
 
 export {
     removeFromCollection,
@@ -21,5 +22,6 @@ export {
     fetchData,
     loadMore,
     showGif,
+    setUser,
     signUp
 }
