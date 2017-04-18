@@ -4,7 +4,7 @@ import  React from 'react';
 
 const presenter  = (props) => {
     return(
-        <div>
+        <div style={{paddingTop: '100px'}}>
             <Notfications/>
             <SignUpForm
                 signup={props.signup}

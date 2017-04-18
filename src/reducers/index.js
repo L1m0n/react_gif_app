@@ -4,6 +4,7 @@ import {combineReducers } from 'redux';
 import collection from './collection';
 import items from './items';
 import user from './user';
+import notifications from './notifications';
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -32,6 +33,7 @@ const  reducer = (state = {}, action) => {
 };
 
 export default combineReducers({
+    notifications,
     user,
     collection,
     app:reducer,

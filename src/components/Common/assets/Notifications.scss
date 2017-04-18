@@ -1,5 +1,5 @@
 .notification {
-  box-shadow: 0px 0px 15px 1px rgba(220, 208, 208, 0.82);
+  box-shadow: 0px 0px 7px 1px rgb(22, 21, 21);
   position: absolute;
   border-radius: 2px;
   background: #fff;
@@ -9,17 +9,20 @@
   top: calc(50%);
   left: calc(50% - 150px);
   text-align: center;
+  padding: 20px 0 25px;
   &--email_exist {
 
   }
   &__wrapper {
     background: rgba(0, 0, 0, 0.61);
     position: fixed;
+    top: 0;
     height:100vh;
     width: 100%;
   }
   &__title {
     font-family:Montserrat, Arial, serif;
+    margin-bottom: 10px;
   }
   &__message {
     font-family:Lato, Arial, serif;
@@ -28,19 +31,40 @@
     }
   }
   &__button {
-    transition: background-color 0.2s linear;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #ff2970;
-    vertical-align: middle;
-    line-height: 45px;
-    font-weight: 400;
-    font-size: 18px;
+    background:#ff2970;
+    border-radius: 50%;
     cursor: pointer;
+    position: absolute;
     display: block;
-    margin: 0 auto;
-    width: 120px;
-    height: 45px;
-    color: #fff;
-    border: none;
+    height: 20px;
+    border:none;
+    width: 20px;
+    right: -10px;
+    top: -10px;
+    &:after, &:before {
+      content: '';
+      display: block;
+      width: 14px;
+      height: 2px;
+      background: #fff;
+      position: absolute;
+      top:9px;
+      left:3px;
+      transform-origin: 50%, 50%;
+    }
+    &:after {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+    &:before {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
   }
 }

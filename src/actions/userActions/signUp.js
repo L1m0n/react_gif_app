@@ -1,4 +1,4 @@
-import setUser from './setUser';
+import * as actions from '../index';
 import axios from 'axios';
 
 const signUp = (user) => {
@@ -11,8 +11,10 @@ const signUp = (user) => {
         .then((res) => {
             if (res.data.success) {
                 localStorage.setItem('_token', res.data.user.token);
-                dispatch(setUser(res.data.user));
+                dispatch(actions.setUser(res.data.user));
+                dispatch(actions.showHideNotification('register_success'));
             } else {
+                dispatch(actions.showHideNotification('email_exist'));
                 console.log(res.data.message);
             }
         })

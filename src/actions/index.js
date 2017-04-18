@@ -1,3 +1,4 @@
+import showHideNotification from './notifications/showHideNotification';
 import removeFromCollection from './removeFromCollection';
 import changeLoadedStatus from './changeLoadedStatus';
 import addToCollection from './addToCollection';
@@ -12,6 +13,7 @@ import loadMore from  './loadMore';
 import showGif from './showGif';
 
 export {
+    showHideNotification,
     removeFromCollection,
     changeLoadedStatus,
     addToCollection,
