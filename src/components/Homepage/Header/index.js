@@ -24,7 +24,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actions.fetchData(offset, category, query))
         },
         changeCategory: (category) => {
-            console.log(actions);
             dispatch(actions.selectCategory(category))
         },
         getDefault: (offset, categori) => {

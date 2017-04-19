@@ -2,9 +2,9 @@ import * as actionTypes from '../constants/actionTypes';
 import { routerReducer } from 'react-router-redux';
 import {combineReducers } from 'redux';
 import collection from './collection';
-import updateData from './updateData';
 import items from './items';
-import gif from './gif';
+import user from './user';
+import notifications from './notifications';
 
 const  reducer = (state = {}, action) => {
     switch (action.type) {
@@ -16,11 +16,6 @@ const  reducer = (state = {}, action) => {
             return Object.assign({}, state, {
                 data:action.json
             });
-        case actionTypes.UPDATE_DATA:
-            return Object.assign({}, state, {
-                ...state,
-                data:updateData(state.data, action.json)
-            });
         case actionTypes.CHANGE_STATUS:
             return Object.assign({}, state, {
                 data:{
@@ -30,7 +25,7 @@ const  reducer = (state = {}, action) => {
             });
         case actionTypes.SHOW_GIF:
             return Object.assign({}, state, {
-                gif: gif(state, action)
+                gif: action.gif
             });
         default:
             return state
@@ -38,6 +33,8 @@ const  reducer = (state = {}, action) => {
 };
 
 export default combineReducers({
+    notifications,
+    user,
     collection,
     app:reducer,
     routing: routerReducer

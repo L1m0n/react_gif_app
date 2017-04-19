@@ -1,6 +1,6 @@
+import * as actions from '../../actions';
 import presenter from './presenter';
 import {connect} from 'react-redux';
-import * as actions from '../../../actions';
 
 const mapStateToProps = (state) => {
     return {
@@ -10,19 +10,17 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-        add: (item) => {
-            dispatch(actions.addToCollection(item));
-        },
-        remove: (id) => {
-            dispatch(actions.removeFromCollection(id));
+    return {
+        signup: (user) => {
+            dispatch(actions.signUp(user));
         }
-  }
+    }
 };
 
-const Gif = connect(
+const SignUpPage = connect(
     mapStateToProps,
     mapDispatchToProps
 )(presenter);
 
-export default Gif;
+
+export default SignUpPage;

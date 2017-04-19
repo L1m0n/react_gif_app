@@ -1,4 +1,5 @@
-import AddToColection from '../AddToCollection';
+import AddToCollection from './AddToCollection';
+import RemoveFromCollection from './RemoveFromCollection';
 import SharePanel from '../SharePanel';
 import React from 'react';
 
@@ -8,9 +9,10 @@ const Gif = (props) => {
         <div className="signle-gif" >
             <SharePanel url={props.gif.url} fb={props.gif.fbUrl} />
             <img src={props.gif.url} alt=""/>
-            <AddToColection onClick={()=>{
-                props.add(props.gif)
-            }}/>
+            {props.collection[props.gif.id] ?
+                <RemoveFromCollection onClick={()=>{ props.remove(props.gif.id) }}/> :
+                <AddToCollection onClick={()=>{ props.add(props.gif) }}/>
+            }
         </div>
     )
 };
