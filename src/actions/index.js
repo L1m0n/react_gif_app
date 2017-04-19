@@ -5,6 +5,7 @@ import addToCollection from './addToCollection';
 import selectCategory from './selectCategory';
 import setUser from './userActions/setUser';
 import signUp from './userActions/signUp';
+import login from './userActions/login';
 import reciveData from './reciveData';
 import updateData from './updateData';
 import getDefault from './getDefault';
@@ -25,5 +26,6 @@ export {
     loadMore,
     showGif,
     setUser,
-    signUp
+    signUp,
+    login
 }

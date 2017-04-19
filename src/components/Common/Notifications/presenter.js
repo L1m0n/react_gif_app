@@ -1,8 +1,9 @@
 require('../assets/Notifications.scss');
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 import React from 'react';
 
 const presenter = (props) => {
+
     return(
         <div>
             <div  style={props.notifications.email_exist ? {display: 'block'} : {display: 'none'}}className="notification__wrapper">
@@ -16,7 +17,10 @@ const presenter = (props) => {
             <div  style={props.notifications.register_success ? {display: 'block'} : {display: 'none'}}className="notification__wrapper">
                 <div style={props.notifications.register_success ? {display: 'block'} : {display: 'none'}} className="notification notification--email_exist">
                     <h3 className="notification__title">Registration successful!</h3>
-                    <button onClick={() => props.onClick('register_success')} className="notification__button">
+                    <button onClick={() => {
+                        props.onClick('register_success');
+                        browserHistory.push('/');
+                    }} className="notification__button">
                     </button>
                 </div>
             </div>
